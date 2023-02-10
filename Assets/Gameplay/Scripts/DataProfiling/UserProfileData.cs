@@ -13,6 +13,9 @@ namespace Gameplay.Scripts.DataProfiling
 
         public CoinsInfoModel CoinsInfoModel => _coinsInfoModel;
         private CoinsInfoModel _coinsInfoModel = new();
+        
+        public ChapterInfoModel ChapterInfoModel => _chapterInfoModel;
+        private ChapterInfoModel _chapterInfoModel = new();
 
         public async UniTask Initialize(DiContainer container)
         {
