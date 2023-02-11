@@ -4,25 +4,19 @@ namespace UI.Scripts.RunningScreen
 {
     public class RunningScreenController : UIScreenController<RunningScreen>
     {
-        private int _score;
         private Action<int> _changeScoreAction;
         public override void Display(UIArgumentsForPanels arguments)
         {
             base.Display(arguments);
             var args = (RunningScreenArguments)arguments;
+            _changeScoreAction += SetScoreText;
             args.PlayerIngredientsStorage.InitChangeScoreAction(_changeScoreAction);
-            _changeScoreAction += ChangeScore;
+            
         }
 
-        private void SetScoreText()
+        private void SetScoreText(int score)
         {
-            View.ScoreText.text = _score.ToString();
-        }
-        
-        private void ChangeScore(int score)
-        {
-            _score += score;
-            SetScoreText();
+            View.ScoreText.text = score.ToString();
         }
     }
 }

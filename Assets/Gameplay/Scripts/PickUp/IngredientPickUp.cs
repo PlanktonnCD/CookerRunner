@@ -8,6 +8,7 @@ namespace Gameplay.Scripts.PickUp
     public class IngredientPickUp : PickUpItem
     {
         [SerializeField] private IngredientsName _ingredientsName;
+        
         protected override async UniTask OnPickUp(PlayerIngredientsStorage player)
         {
             player.PickUpIngredient(transform, _ingredientsName);

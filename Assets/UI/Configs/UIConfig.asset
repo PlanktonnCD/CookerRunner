@@ -28,3 +28,11 @@ MonoBehaviour:
       _typeNameAndAssembly: UI.Scripts.BeforeStartScreen.BeforeStartScreenController,
         Assembly-CSharp
       _suppressLogs: 0
+  - Prefab: {fileID: 8138005896556127144, guid: 5d3e37db6073b0a4d864d8b7bcca11a3,
+      type: 3}
+    ClassReference:
+      GuidAssignmentFailed: 0
+      GUID: 25f9dbeb22934fbba3d2adbdee943f12
+      _typeNameAndAssembly: UI.Scripts.CheckDishScreen.CheckDishScreenController,
+        Assembly-CSharp
+      _suppressLogs: 0

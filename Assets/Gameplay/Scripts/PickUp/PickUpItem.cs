@@ -27,7 +27,10 @@ namespace Gameplay.Scripts.PickUp
 
         private void Start()
         {
-            transform.DORotate(Vector3.up * 360 + transform.eulerAngles, 2).SetEase(Ease.Linear).SetLoops(-1);
+            var seq = DOTween.Sequence();
+            seq.Append(transform.DORotate(Vector3.up * 360 + transform.eulerAngles, 2).SetEase(Ease.Linear));
+            seq.SetLoops(-1);
+            seq.Play();
         }
 
         protected virtual UniTask OnPickUp(PlayerIngredientsStorage player)

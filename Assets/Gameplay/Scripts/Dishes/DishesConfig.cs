@@ -22,6 +22,6 @@ namespace Gameplay.Scripts.Dishes
     {
         public string Name;
         public List<IngredientsName> RequireIngredients;
-        public List<IngredientsName> AdditionalScoreIngeredients;
+        public List<IngredientsName> AdditionalScoreIngredients;
     }
 }
