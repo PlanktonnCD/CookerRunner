@@ -29,6 +29,19 @@ namespace Pool
             poolObject.gameObject.SetActive(false);
         }
 
+        public IReadOnlyList<T> GetAllActiveObjects()
+        {
+            var newList = new List<T>();
+            foreach (var poolObject in _poolList)
+            {
+                if (poolObject.gameObject.activeSelf == true)
+                {
+                    newList.Add(poolObject);
+                }
+            }
+            return newList;
+        }
+
         public void ReturnAll()
         {
             foreach (var monoBehaviour in _poolList)

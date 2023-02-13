@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
 using DG.Tweening;
 using Gameplay.Scripts.Dishes;
@@ -21,6 +22,7 @@ namespace UI.Scripts.CheckDishScreen
         private float _additionalScoreMultiplier = 1;
         private float _timeScoreMultiplier = 1;
         private float _baseScoreMultiplier = 1;
+        private bool _isLose;
 
         [Inject]
         private void Construct(DishesConfig dishesConfig, IngredientsConfig ingredientsConfig)
@@ -54,11 +56,22 @@ namespace UI.Scripts.CheckDishScreen
 
         public override async UniTask OnShow()
         {
+            View.AccuracyDishText.gameObject.SetActive(false);
+            View.ScoreText.gameObject.SetActive(false);
             await base.OnShow();
-            CheckExistenceRequiredIngredients();
-            CalculateAdditionalIngredientsMultiplier();
-            CheckDishAccuracy();
-            CalculateScore();
+            CheckDish();
+        }
+
+        private async void CheckDish()
+        {
+            await CheckExistenceRequiredIngredients();
+            await CalculateAdditionalIngredientsMultiplier();
+            await CheckDishAccuracy();
+            if (_isLose == true)
+            {
+                return;
+            }
+            await CalculateScore();
         }
 
         private void SetIngredientsImages(MonoBehaviourPool<IngredientImage> pool, List<IngredientsName> ingredientsNames, List<IngredientsName> checkList)
@@ -66,12 +79,20 @@ namespace UI.Scripts.CheckDishScreen
             foreach (var ingredient in ingredientsNames)
             {
                 var ingredientImage = pool.GetObject();
-                ingredientImage.SetObtainState(checkList.Contains(ingredient));
                 ingredientImage.SetIngredientImage(_ingredientsConfig.GetIngredientByName(ingredient).Sprite);
             }
         }
         
-        private void CheckExistenceRequiredIngredients()
+        private async UniTask SetIngredientsStateImages(MonoBehaviourPool<IngredientImage> pool, List<IngredientsName> ingredientsNames, List<IngredientsName> checkList)
+        {
+            var ingredientImages = pool.GetAllActiveObjects();
+            for (int i = 0; i < ingredientImages.Count; i++)
+            {
+                await ingredientImages[i].SetObtainState(checkList.Contains(ingredientsNames[i]));
+            }
+        }
+        
+        private async UniTask CheckExistenceRequiredIngredients()
         {
             var dictionary = new Dictionary<IngredientsName, bool>();
             foreach (var requireIngredient in _dish.RequireIngredients)
@@ -79,14 +100,17 @@ namespace UI.Scripts.CheckDishScreen
                 dictionary.Add(requireIngredient, _ingredients.Contains(requireIngredient));
             }
 
+            await SetIngredientsStateImages(View.PositiveIngredientImagesPool, _dish.RequireIngredients, _ingredients);
+            
             if (dictionary.ContainsValue(false))
             {
-                View.ScoreText.text = "You dont get all required ingredients";
+                _isLose = true;
             }
         }
 
-        private void CalculateAdditionalIngredientsMultiplier()
+        private async UniTask CalculateAdditionalIngredientsMultiplier()
         {
+            await SetIngredientsStateImages(View.AdditionalScoreIngredientImagesPool, _dish.AdditionalScoreIngredients, _ingredients);
             int correctIngredients = 0;
             foreach (var ingredient in _ingredients)
             {
@@ -103,7 +127,7 @@ namespace UI.Scripts.CheckDishScreen
             }
         }
         
-        private void CheckDishAccuracy()
+        private async UniTask CheckDishAccuracy()
         {
             int correctIngredients = 0;
             foreach (var ingredient in _ingredients)
@@ -115,10 +139,18 @@ namespace UI.Scripts.CheckDishScreen
             }
 
             float accuracy = (float)correctIngredients / (float)_ingredients.Count * 100;
-            View.AccuracyDishText.text = accuracy.ToString("0.") + "%";
+            float visibleAccuracy = 0;
+            View.AccuracyDishText.gameObject.SetActive(true);
+            do
+            {
+                View.AccuracyDishText.text = visibleAccuracy.ToString("0.") + "%";
+                visibleAccuracy += 1;
+                await UniTask.Delay(TimeSpan.FromSeconds(0.01f));
+            } while (visibleAccuracy <= accuracy);
+            
             if (accuracy < 50)
             {
-                //lose
+                _isLose = true;
             }
 
             if (accuracy < 75)
@@ -137,9 +169,17 @@ namespace UI.Scripts.CheckDishScreen
             }
         }
 
-        private void CalculateScore()
+        private async UniTask CalculateScore()
         {
-            View.ScoreText.text = (_score * (_accuracyScoreMultiplier * _timeScoreMultiplier * _additionalScoreMultiplier)).ToString("0.");
+            View.ScoreText.gameObject.SetActive(true);
+            var realScore = _score * (_accuracyScoreMultiplier * _timeScoreMultiplier * _additionalScoreMultiplier);
+            var visibleScore = 0;
+            do
+            {
+                View.ScoreText.text = visibleScore.ToString("0.");
+                visibleScore += 1;
+                await UniTask.Delay(TimeSpan.FromMilliseconds(0.05f));
+            } while (visibleScore <= realScore);
         }
     }
 }

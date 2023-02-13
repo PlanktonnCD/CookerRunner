@@ -1,4 +1,7 @@
-﻿using UnityEngine;
+﻿using System;
+using Cysharp.Threading.Tasks;
+using DG.Tweening;
+using UnityEngine;
 using UnityEngine.UI;
 
 namespace UI.Scripts.CheckDishScreen
@@ -15,18 +18,21 @@ namespace UI.Scripts.CheckDishScreen
             _ingredientImage.preserveAspect = true;
         }
 
-        public void SetObtainState(bool isObtained)
+        public async UniTask SetObtainState(bool isObtained)
         {
             if (isObtained == true)
             {
-
                 _successObtainImage.enabled = true;
+                _successObtainImage.transform.DOScale(Vector3.one, 0.5f).From(Vector3.one * 1.5f).SetEase(Ease.Linear);
                 _failObtainImage.enabled = false;
+                await UniTask.Delay(TimeSpan.FromSeconds(0.25f));
                 return;
             }
 
             _successObtainImage.enabled = false;
             _failObtainImage.enabled = true;
+            _failObtainImage.transform.DOScale(Vector3.one, 0.5f).From(Vector3.one * 1.5f).SetEase(Ease.Linear);
+            await UniTask.Delay(TimeSpan.FromSeconds(0.25f));
         }
     }
 }

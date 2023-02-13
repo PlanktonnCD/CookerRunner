@@ -36,7 +36,7 @@ namespace Gameplay.Scripts.Player
         
         public void PickUpIngredient(Transform ingredientTransform, IngredientsName ingredientsName)
         {
-            _score += 200;
+            _score += 50;
             _changeScoreAction?.Invoke(_score);
             _ingredients.Add(ingredientsName);
         }
