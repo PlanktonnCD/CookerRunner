@@ -47,5 +47,10 @@ namespace Gameplay.Scripts.Player
             var args = new CheckDishScreenArguments(_ingredients, _dishName, _score);
             _uiManager.Show<CheckDishScreenController>(args);
         }
+
+        public void Release()
+        {
+            _score = 0;
+        }
     }
 }

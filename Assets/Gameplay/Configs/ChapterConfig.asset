@@ -20,34 +20,44 @@ MonoBehaviour:
       DishOnLevel: 0
       Level: {fileID: 2453244184169100433, guid: 477bb43327c472848846e031f53a3b9f,
         type: 3}
+      ScoreForStars: fa000000f4010000ee020000
     - Index: 2
       DishOnLevel: 0
       Level: {fileID: 2453244184169100433, guid: 477bb43327c472848846e031f53a3b9f,
         type: 3}
+      ScoreForStars: 960000005802000084030000
     - Index: 3
       DishOnLevel: 0
       Level: {fileID: 0}
+      ScoreForStars: 
     - Index: 4
       DishOnLevel: 0
       Level: {fileID: 0}
+      ScoreForStars: 
     - Index: 5
       DishOnLevel: 0
       Level: {fileID: 0}
+      ScoreForStars: 
   - Index: 1
     LocationName: 1
     Levels:
     - Index: 1
       DishOnLevel: 0
       Level: {fileID: 0}
+      ScoreForStars: 
     - Index: 2
       DishOnLevel: 0
       Level: {fileID: 0}
+      ScoreForStars: 
     - Index: 3
       DishOnLevel: 0
       Level: {fileID: 0}
+      ScoreForStars: 
     - Index: 4
       DishOnLevel: 0
       Level: {fileID: 0}
+      ScoreForStars: 
     - Index: 5
       DishOnLevel: 0
       Level: {fileID: 0}
+      ScoreForStars: 

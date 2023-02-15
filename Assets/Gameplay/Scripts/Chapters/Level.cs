@@ -28,5 +28,11 @@ namespace Gameplay.Scripts.Chapters
             _player = _container.InstantiatePrefab(playerPrefab, _playerStartPos.position, Quaternion.identity, transform ).GetComponent<PlayerMovement>();
             _player.SetOnStartLevel(_dishName);
         }
+
+        public void Release()
+        {
+            _player.Release();
+            Destroy(_player);
+        }
     }
 }

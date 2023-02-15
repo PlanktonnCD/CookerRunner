@@ -21,6 +21,7 @@ namespace Gameplay.Scripts.Dishes
     public struct Dish
     {
         public string Name;
+        public Sprite Sprite;
         public List<IngredientsName> RequireIngredients;
         public List<IngredientsName> AdditionalScoreIngredients;
     }

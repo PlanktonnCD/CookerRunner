@@ -123,6 +123,7 @@ namespace Gameplay.Scripts.Player
             //_audioManager.TurnOffSound(_movementSound, true);
             _inputController.DeltaInputPositionEvent -= InputControllerOnDeltaInputPositionEvent;
             _signalBus.TryUnsubscribe<CanStartRunSignal>(SetItCanRun);
+            _playerIngredientsStorage.Release();
             StopMove();
             gameObject.SetActive(false);
         }

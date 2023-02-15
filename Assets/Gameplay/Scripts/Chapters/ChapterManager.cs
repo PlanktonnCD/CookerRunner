@@ -1,4 +1,5 @@
 using System;
+using Gameplay.Scripts.DataProfiling;
 using Gameplay.Scripts.Player;
 using UnityEngine;
 using Zenject;
@@ -11,23 +12,33 @@ namespace Gameplay.Scripts.Chapters
         private Level _currentLevel;
         public Level CurrentLevel => _currentLevel;
         private ChapterFactory _chapterFactory;
+        private DataManager _dataManager;
 
 
         [Inject]
-        private void Construct(ChapterFactory chapterFactory)
+        private void Construct(ChapterFactory chapterFactory, DataManager dataManager)
         {
+            _dataManager = dataManager;
             _chapterFactory = chapterFactory;
         }
 
-        public void CreateLevel(int locationIndex, int chapterIndex)
+        public void CreateLevel(int levelIndex, int chapterIndex)
         { 
-            _currentLevel = _chapterFactory.Create(locationIndex, chapterIndex , transform);
+            _dataManager.UserProfileData.ChapterInfoModel.ChooseChapterAndLevel(levelIndex, chapterIndex);
+            _currentLevel = _chapterFactory.Create(levelIndex, chapterIndex , transform);
             _currentLevel.SpawnPlayer(_playerPrefab);
         }
 
-        public void DestroyLevel()
+        public void CreateCurrentProgressLevel()
         {
-            Destroy(_currentLevel);
+            CreateLevel(_dataManager.UserProfileData.ChapterInfoModel.CurrentLevelprogress, _dataManager.UserProfileData.ChapterInfoModel.CurrentChapterProgress);
+        }
+
+        public void Release()
+        {
+            _currentLevel.Release();
+            Destroy(_currentLevel.gameObject);
+            _currentLevel = null;
         }
 
         public void Dispose()

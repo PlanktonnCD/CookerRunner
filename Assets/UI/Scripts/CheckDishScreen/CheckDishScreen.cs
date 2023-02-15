@@ -1,4 +1,5 @@
-﻿using Pool;
+﻿using System.Collections.Generic;
+using Pool;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -12,5 +13,7 @@ namespace UI.Scripts.CheckDishScreen
         [field: SerializeField] public MonoBehaviourPool<IngredientImage> StoredIngredientImagesPool { get; private set; }
         [field: SerializeField] public TextMeshProUGUI AccuracyDishText { get; private set; }
         [field: SerializeField] public TextMeshProUGUI ScoreText { get; private set; }
+        [field: SerializeField] public Button ComebackButton { get; private set; }
+        [field: SerializeField] public List<Image> StarsImages { get; private set; }
     }
 }

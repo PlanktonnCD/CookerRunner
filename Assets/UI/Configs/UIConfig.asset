@@ -36,3 +36,10 @@ MonoBehaviour:
       _typeNameAndAssembly: UI.Scripts.CheckDishScreen.CheckDishScreenController,
         Assembly-CSharp
       _suppressLogs: 0
+  - Prefab: {fileID: 7277077211643664073, guid: 63ed2f1a7ee57054ba3de08544041503,
+      type: 3}
+    ClassReference:
+      GuidAssignmentFailed: 0
+      GUID: 14200cadcf6a49db891b348ee48c0ee2
+      _typeNameAndAssembly: UI.Scripts.MainMenuScreen.MainMenuScreenController, Assembly-CSharp
+      _suppressLogs: 0

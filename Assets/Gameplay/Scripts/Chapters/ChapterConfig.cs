@@ -34,6 +34,22 @@ namespace Gameplay.Scripts.Chapters
 
             return default;
         }
+
+        public List<int> GetScoreForStarsByDishName(DishName dishName)
+        {
+            foreach (var chapter in _chapters)
+            {
+                foreach (var level in chapter.Levels)
+                {
+                    if (level.DishOnLevel == dishName)
+                    {
+                        return level.ScoreForStars;
+                    }
+                }
+            }
+
+            return new List<int>();
+        }
     }
 
     [Serializable]
@@ -50,5 +66,6 @@ namespace Gameplay.Scripts.Chapters
         public int Index;
         public DishName DishOnLevel;
         public Level Level;
+        public List<int> ScoreForStars;
     }
 }

@@ -2,9 +2,13 @@
 using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
 using DG.Tweening;
+using Gameplay.Scripts.Chapters;
+using Gameplay.Scripts.DataProfiling;
 using Gameplay.Scripts.Dishes;
 using Gameplay.Scripts.Player.Ingredients;
 using Pool;
+using UI.Scripts.BeforeStartScreen;
+using UI.Scripts.MainMenuScreen;
 using UnityEngine;
 using UnityEngine.UI;
 using Zenject;
@@ -23,21 +27,51 @@ namespace UI.Scripts.CheckDishScreen
         private float _timeScoreMultiplier = 1;
         private float _baseScoreMultiplier = 1;
         private bool _isLose;
+        private UIManager _uiManager;
+        private ChapterConfig _chapterConfig;
+        private DishName _dishName;
+        private DataManager _dataManager;
+        private int _chapter;
+        private int _level;
+        private ChapterManager _chapterManager;
 
         [Inject]
-        private void Construct(DishesConfig dishesConfig, IngredientsConfig ingredientsConfig)
+        private void Construct(DishesConfig dishesConfig, IngredientsConfig ingredientsConfig, ChapterConfig chapterConfig, UIManager uiManager, ChapterManager chapterManager, DataManager dataManager)
         {
+            _chapterManager = chapterManager;
+            _dataManager = dataManager;
+            _chapterConfig = chapterConfig;
+            _uiManager = uiManager;
             _dishesConfig = dishesConfig;
             _ingredientsConfig = ingredientsConfig;
+        }
+
+        public override void Init(UIScreen uiScreen)
+        {
+            base.Init(uiScreen);
+            View.ComebackButton.onClick.AddListener((() =>
+            {
+                _chapterManager.Release();
+                if (_dataManager.UserProfileData.ChapterInfoModel.TryIncreaseChapterLevelIndex() == true)
+                {
+                    
+                    _uiManager.Show<BeforeStartScreenController>();
+                    return;
+                }
+                _uiManager.Show<MainMenuScreenController>();
+            }));
         }
 
         public override void Display(UIArgumentsForPanels arguments)
         {
             base.Display(arguments);
             var args = (CheckDishScreenArguments)arguments;
-            _dish = _dishesConfig.GetDishByName(args.DishName);
+            _dishName = args.DishName;
+            _dish = _dishesConfig.GetDishByName(_dishName);
             _ingredients = args.Ingredients;
             _score = args.Score;
+            _chapter = _dataManager.UserProfileData.ChapterInfoModel.ChosenChapter;
+            _level = _dataManager.UserProfileData.ChapterInfoModel.ChosenLevel;
             SetIngredientsImages(View.PositiveIngredientImagesPool, _dish.RequireIngredients, _ingredients);
             SetIngredientsImages(View.AdditionalScoreIngredientImagesPool, _dish.AdditionalScoreIngredients, _ingredients);
 
@@ -56,6 +90,7 @@ namespace UI.Scripts.CheckDishScreen
 
         public override async UniTask OnShow()
         {
+            View.ComebackButton.gameObject.SetActive(false);
             View.AccuracyDishText.gameObject.SetActive(false);
             View.ScoreText.gameObject.SetActive(false);
             await base.OnShow();
@@ -72,6 +107,7 @@ namespace UI.Scripts.CheckDishScreen
                 return;
             }
             await CalculateScore();
+            View.ComebackButton.gameObject.SetActive(true);
         }
 
         private void SetIngredientsImages(MonoBehaviourPool<IngredientImage> pool, List<IngredientsName> ingredientsNames, List<IngredientsName> checkList)
@@ -173,13 +209,28 @@ namespace UI.Scripts.CheckDishScreen
         {
             View.ScoreText.gameObject.SetActive(true);
             var realScore = _score * (_accuracyScoreMultiplier * _timeScoreMultiplier * _additionalScoreMultiplier);
-            var visibleScore = 0;
+            var scoreForStars = _chapterConfig.GetScoreForStarsByDishName(_dishName);
+            int stars = 0;
+            int visibleScore = 0;
             do
             {
                 View.ScoreText.text = visibleScore.ToString("0.");
                 visibleScore += 1;
+                if (stars < scoreForStars.Count && scoreForStars[stars] == visibleScore)
+                {
+                    View.StarsImages[stars++].color = Color.white;
+                }
                 await UniTask.Delay(TimeSpan.FromMilliseconds(0.05f));
             } while (visibleScore <= realScore);
+            _dataManager.UserProfileData.ChapterInfoModel.SetHighscore(_chapter, _level, visibleScore, stars);
+        }
+
+        public override async UniTask OnHide()
+        {
+            await base.OnHide();
+            View.PositiveIngredientImagesPool.ReturnAll();
+            View.StoredIngredientImagesPool.ReturnAll();
+            View.AdditionalScoreIngredientImagesPool.ReturnAll();
         }
     }
 }

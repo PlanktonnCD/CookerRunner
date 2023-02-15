@@ -12,5 +12,6 @@ public class ChapterInstaller : ScriptableObjectInstaller<ChapterInstaller>
     {
         Container.BindInterfacesAndSelfTo<ChapterFactory>().FromNew().AsSingle().WithArguments(_chapterConfig);
         Container.BindInterfacesAndSelfTo<ChapterManager>().FromComponentInNewPrefab(_chapterManager).AsSingle();
+        Container.BindInterfacesAndSelfTo<ChapterConfig>().FromInstance(_chapterConfig).AsSingle();
     }
 }

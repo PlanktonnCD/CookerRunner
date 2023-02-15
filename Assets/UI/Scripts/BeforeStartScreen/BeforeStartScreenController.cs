@@ -20,8 +20,13 @@ namespace UI.Scripts.BeforeStartScreen
         public override void Display(UIArgumentsForPanels arguments)
         {
             base.Display(arguments);
-            var args = (BeforeStartScreenArguments)arguments;
-            _chapterManager.CreateLevel(args.LevelIndex, args.ChapterIndex);
+            if (arguments != null)
+            {
+                var args = (BeforeStartScreenArguments)arguments;
+                _chapterManager.CreateLevel(args.LevelIndex, args.ChapterIndex);
+                return;
+            }
+            _chapterManager.CreateCurrentProgressLevel();
         }
 
         public override async UniTask OnShow()

@@ -2,6 +2,7 @@ using System;
 using Gameplay.Scripts.DataProfiling;
 using UI;
 using UI.Scripts.BeforeStartScreen;
+using UI.Scripts.MainMenuScreen;
 using UnityEngine;
 using Zenject;
 
@@ -23,8 +24,16 @@ namespace Gameplay.Scripts.Bootstrap
         {
             await _dataManager.ReadData();
 
-            var args = new BeforeStartScreenArguments(_dataManager.UserProfileData.ChapterInfoModel.CurrentLevelprogress, _dataManager.UserProfileData.ChapterInfoModel.CurrentChapterProgress);
-            _uiManager.Show<BeforeStartScreenController>(args);
+            if (_dataManager.UserProfileData.ChapterInfoModel.CurrentChapterProgress > 1 || _dataManager.UserProfileData.ChapterInfoModel.CurrentLevelprogress > 1)
+            {
+                _uiManager.Show<MainMenuScreenController>();
+            }
+            else
+            {
+                var args = new BeforeStartScreenArguments(_dataManager.UserProfileData.ChapterInfoModel.CurrentLevelprogress, _dataManager.UserProfileData.ChapterInfoModel.CurrentChapterProgress);
+                _uiManager.Show<BeforeStartScreenController>(args);
+            }
+            
         }
         
         private void OnDisable()
