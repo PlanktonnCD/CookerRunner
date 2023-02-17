@@ -25,7 +25,6 @@ namespace UI.Scripts.CheckDishScreen
         private float _accuracyScoreMultiplier = 1;
         private float _additionalScoreMultiplier = 1;
         private float _timeScoreMultiplier = 1;
-        private float _baseScoreMultiplier = 1;
         private bool _isLose;
         private UIManager _uiManager;
         private ChapterConfig _chapterConfig;
@@ -146,6 +145,7 @@ namespace UI.Scripts.CheckDishScreen
 
         private async UniTask CalculateAdditionalIngredientsMultiplier()
         {
+            _additionalScoreMultiplier = 1f;
             await SetIngredientsStateImages(View.AdditionalScoreIngredientImagesPool, _dish.AdditionalScoreIngredients, _ingredients);
             int correctIngredients = 0;
             foreach (var ingredient in _ingredients)
@@ -231,6 +231,12 @@ namespace UI.Scripts.CheckDishScreen
             View.PositiveIngredientImagesPool.ReturnAll();
             View.StoredIngredientImagesPool.ReturnAll();
             View.AdditionalScoreIngredientImagesPool.ReturnAll();
+            foreach (var starsImage in View.StarsImages)
+            {
+                starsImage.color = Color.black;
+            }
+            View.ScoreText.text = String.Empty;
+            _score = 0;
         }
     }
 }

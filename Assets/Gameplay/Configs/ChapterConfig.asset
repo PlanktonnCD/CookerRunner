@@ -15,6 +15,7 @@ MonoBehaviour:
   _chapters:
   - Index: 1
     LocationName: 0
+    StarsForOpen: 0
     Levels:
     - Index: 1
       DishOnLevel: 0
@@ -28,18 +29,17 @@ MonoBehaviour:
       ScoreForStars: 960000005802000084030000
     - Index: 3
       DishOnLevel: 0
-      Level: {fileID: 0}
-      ScoreForStars: 
+      Level: {fileID: 2453244184169100433, guid: 477bb43327c472848846e031f53a3b9f,
+        type: 3}
+      ScoreForStars: 960000005802000084030000
     - Index: 4
       DishOnLevel: 0
-      Level: {fileID: 0}
-      ScoreForStars: 
-    - Index: 5
-      DishOnLevel: 0
-      Level: {fileID: 0}
-      ScoreForStars: 
-  - Index: 1
+      Level: {fileID: 2453244184169100433, guid: 477bb43327c472848846e031f53a3b9f,
+        type: 3}
+      ScoreForStars: 960000005802000084030000
+  - Index: 2
     LocationName: 1
+    StarsForOpen: 8
     Levels:
     - Index: 1
       DishOnLevel: 0

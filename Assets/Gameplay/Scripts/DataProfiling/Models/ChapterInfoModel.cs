@@ -24,9 +24,20 @@ namespace Gameplay.Scripts.DataProfiling.Models
         };
 
         [JsonProperty] private Dictionary<int, ChapterHighscores> _highscores = new Dictionary<int, ChapterHighscores>();
+        
+        [JsonIgnore] public int StarsCount => _starsCount;
+        [JsonIgnore] private int _starsCount;
 
         public void Initialize()
         {
+            foreach (var highscores in _highscores)
+            {
+                foreach (var highscore in highscores.Value.Highscores)
+                {
+                    _starsCount += highscore.Stars;
+                }
+            }
+            Debug.Log(_starsCount);
         }
         
         public bool TryIncreaseChapterLevelIndex(int count = 1)

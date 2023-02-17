@@ -57,6 +57,7 @@ namespace Gameplay.Scripts.Chapters
     {
         public int Index;
         public LocationName LocationName;
+        public int StarsForOpen;
         public List<LevelInitializer> Levels;
     }
 

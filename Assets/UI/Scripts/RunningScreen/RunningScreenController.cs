@@ -1,4 +1,5 @@
 using System;
+using Cysharp.Threading.Tasks;
 
 namespace UI.Scripts.RunningScreen
 {
@@ -9,6 +10,7 @@ namespace UI.Scripts.RunningScreen
         {
             base.Display(arguments);
             var args = (RunningScreenArguments)arguments;
+            SetScoreText(0);
             _changeScoreAction += SetScoreText;
             args.PlayerIngredientsStorage.InitChangeScoreAction(_changeScoreAction);
             
@@ -18,5 +20,6 @@ namespace UI.Scripts.RunningScreen
         {
             View.ScoreText.text = score.ToString();
         }
+        
     }
 }
