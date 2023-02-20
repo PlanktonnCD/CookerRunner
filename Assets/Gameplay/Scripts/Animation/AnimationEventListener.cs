@@ -5,17 +5,11 @@ namespace Gameplay.Scripts.Animation
 {
     public class AnimationEventListener : MonoBehaviour
     {
-        public Action OnAttackAnimationEnd;
-        public Action OnIdleAnimationEnd;
+        public Action OnAnimationEndAction;
 
-        public void OnAnimationAttack()
+        public void OnAnimationEnd()
         {
-            OnAttackAnimationEnd?.Invoke();
-        }
-
-        public void OnAnimationIdle()
-        {
-            OnIdleAnimationEnd?.Invoke();
+            OnAnimationEndAction?.Invoke();
         }
     }
 }

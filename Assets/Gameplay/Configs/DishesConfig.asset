@@ -16,14 +16,18 @@ MonoBehaviour:
     _keys: 00000000010000000200000003000000
     _values:
     - Name: 
+      Sprite: {fileID: 0}
       RequireIngredients: 000000000100000003000000
-      AdditionalScoreIngredients: 05000000
+      AdditionalScoreIngredients: 0500000009000000
     - Name: 
+      Sprite: {fileID: 0}
       RequireIngredients: 
       AdditionalScoreIngredients: 
     - Name: 
+      Sprite: {fileID: 0}
       RequireIngredients: 
       AdditionalScoreIngredients: 
     - Name: 
+      Sprite: {fileID: 0}
       RequireIngredients: 
       AdditionalScoreIngredients: 

@@ -11,5 +11,6 @@ namespace Gameplay.Scripts.Player.Ingredients
         cheese,
         orange,
         apple,
+        meat
     }
 }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Audio;
 using Cysharp.Threading.Tasks;
 using DG.Tweening;
+using Gameplay.Scripts.Animation;
 using Gameplay.Scripts.CameraScripting;
 using Gameplay.Scripts.Dishes;
 using Gameplay.Scripts.Input;
@@ -19,8 +20,9 @@ namespace Gameplay.Scripts.Player
         [SerializeField] private GameObject _playerModel;
         [SerializeField] private TrackName _movementSound;
         [SerializeField] private PlayerIngredientsStorage _playerIngredientsStorage;
+        [SerializeField] private Animator _animator;
 
-        
+        private AnimationController<PlayerAnimationType> _animationController;
         private float _speed = 9;
         private float _posLimit;
         private const float _posLimitConst = 4.52f;
@@ -51,8 +53,9 @@ namespace Gameplay.Scripts.Player
 
         public virtual void SetOnStartLevel(DishName dishName)
         {
+            _animationController = new AnimationController<PlayerAnimationType>(_animator);
             _cameraController.ChangeTargetWithoutAnimation(transform, CameraSide.Behind);
-            _playerIngredientsStorage.SetCurrentDish(dishName);
+            _playerIngredientsStorage.Init(dishName, _animationController);
             _playerModel.transform.Rotate(0, 180, 0);
             _isRun = false;
         }
@@ -89,6 +92,7 @@ namespace Gameplay.Scripts.Player
             _playerModel.transform.DORotate(Vector3.zero, _rotationTime);
             await UniTask.Delay(TimeSpan.FromSeconds(_rotationTime));
             SubscribeInputEvent();
+            _animationController.StartAnimation(new Bool<PlayerAnimationType>(){Value = _isRun}, PlayerAnimationType.Walk);
         }
 
         private void InputControllerOnDeltaInputPositionEvent(float position)
@@ -133,6 +137,7 @@ namespace Gameplay.Scripts.Player
             //_audioManager.TurnOffSound(_movementSound, true);
             _isRun = false;
             _inputController.DeltaInputPositionEvent -= InputControllerOnDeltaInputPositionEvent;
+            _animationController.StartAnimation(new Bool<PlayerAnimationType>(){Value = _isRun}, PlayerAnimationType.Walk);
         }
 
         public void Dispose()
