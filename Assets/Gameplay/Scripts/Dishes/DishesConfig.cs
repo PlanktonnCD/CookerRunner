@@ -22,6 +22,7 @@ namespace Gameplay.Scripts.Dishes
     {
         public string Name;
         public Sprite Sprite;
+        public GameObject ModelPrefab;
         public List<IngredientsName> RequireIngredients;
         public List<IngredientsName> AdditionalScoreIngredients;
     }

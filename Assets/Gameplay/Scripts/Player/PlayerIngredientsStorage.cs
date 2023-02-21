@@ -75,30 +75,31 @@ namespace Gameplay.Scripts.Player
         private void MoveIngredient(Transform ingredientTransform, IngredientFlyingDirection direction)
         {
             ingredientTransform.parent = transform;
+            var xDelta = Random.Range(-0.5f, 0.5f);
             var seq = DOTween.Sequence();
             switch (direction)
             {
                 case IngredientFlyingDirection.Left:
-                    ingredientTransform.DOLocalMoveZ(_potTransform.localPosition.z, 2);
-                    ingredientTransform.DORotate(Vector3.one*360, 1.5f, RotateMode.FastBeyond360).SetLoops(-1).SetEase(Ease.Linear);
-                    seq.Append(ingredientTransform.DOLocalMoveY(transform.localPosition.y + 3, 1f).SetEase(Ease.Linear));
-                    seq.Join(ingredientTransform.DOLocalMoveX(_potTransform.localPosition.x - 1, 1f).SetEase(Ease.Linear));
-                    seq.Append(ingredientTransform.DOLocalMoveY(_potTransform.localPosition.y, 1f).SetEase(Ease.Linear));
+                    ingredientTransform.DOLocalMoveZ(_potTransform.localPosition.z, 2).SetEase(Ease.OutCirc);
+                    ingredientTransform.DORotate(Vector3.one*360, 2f, RotateMode.FastBeyond360).SetLoops(-1).SetEase(Ease.Linear);
+                    seq.Append(ingredientTransform.DOLocalMoveY(transform.localPosition.y + 3, 1f).SetEase(Ease.OutCirc));
+                    seq.Join(ingredientTransform.DOLocalMoveX(_potTransform.localPosition.x - 1 + xDelta, 1f).SetEase(Ease.Linear));
+                    seq.Append(ingredientTransform.DOLocalMoveY(_potTransform.localPosition.y+0.25f, 1f).SetEase(Ease.InCirc));
                     seq.Join(ingredientTransform.DOLocalMoveX(_potTransform.localPosition.x , 1f).SetEase(Ease.Linear));
                     break;
                 case IngredientFlyingDirection.Center:
-                    ingredientTransform.DOLocalMoveZ(_potTransform.localPosition.z, 2).SetEase(Ease.Linear);
+                    ingredientTransform.DOLocalMoveZ(_potTransform.localPosition.z, 2).SetEase(Ease.OutCirc);
                     ingredientTransform.DOLocalMoveX(_potTransform.localPosition.x, 2).SetEase(Ease.Linear);
-                    ingredientTransform.DORotate(Vector3.one*360, 1.5f, RotateMode.FastBeyond360).SetLoops(-1).SetEase(Ease.Linear);
-                    seq.Append(ingredientTransform.DOLocalMoveY(transform.localPosition.y + 3, 1f).SetEase(Ease.Linear));
-                    seq.Append(ingredientTransform.DOLocalMoveY(_potTransform.localPosition.y, 1f).SetEase(Ease.Linear));
+                    ingredientTransform.DORotate(Vector3.one*360, 2f, RotateMode.FastBeyond360).SetLoops(-1).SetEase(Ease.Linear);
+                    seq.Append(ingredientTransform.DOLocalMoveY(transform.localPosition.y + 3, 1f).SetEase(Ease.OutCirc));
+                    seq.Append(ingredientTransform.DOLocalMoveY(_potTransform.localPosition.y+0.25f, 1f).SetEase(Ease.InCirc));
                     break;
                 case IngredientFlyingDirection.Right:
-                    ingredientTransform.DOLocalMoveZ(_potTransform.localPosition.z, 2).SetEase(Ease.Linear);
-                    ingredientTransform.DORotate(Vector3.one*-360, 1.5f, RotateMode.FastBeyond360).SetLoops(-1).SetEase(Ease.Linear);
-                    seq.Append(ingredientTransform.DOLocalMoveY(transform.localPosition.y + 3, 1f).SetEase(Ease.Linear));
-                    seq.Join(ingredientTransform.DOLocalMoveX(_potTransform.localPosition.x + 1, 1f).SetEase(Ease.Linear));
-                    seq.Append(ingredientTransform.DOLocalMoveY(_potTransform.localPosition.y, 1f).SetEase(Ease.Linear));
+                    ingredientTransform.DOLocalMoveZ(_potTransform.localPosition.z, 2).SetEase(Ease.OutCirc);
+                    ingredientTransform.DORotate(Vector3.one*-360, 2f, RotateMode.FastBeyond360).SetLoops(-1).SetEase(Ease.Linear);
+                    seq.Append(ingredientTransform.DOLocalMoveY(transform.localPosition.y + 3, 1f).SetEase(Ease.OutCirc));
+                    seq.Join(ingredientTransform.DOLocalMoveX(_potTransform.localPosition.x + 1+ xDelta, 1f).SetEase(Ease.Linear));
+                    seq.Append(ingredientTransform.DOLocalMoveY(_potTransform.localPosition.y+0.25f, 1f).SetEase(Ease.InCirc));
                     seq.Join(ingredientTransform.DOLocalMoveX(_potTransform.localPosition.x , 1f).SetEase(Ease.Linear));
                     break;
                 default:

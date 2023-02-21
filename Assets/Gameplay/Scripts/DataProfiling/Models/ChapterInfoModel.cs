@@ -37,7 +37,6 @@ namespace Gameplay.Scripts.DataProfiling.Models
                     _starsCount += highscore.Stars;
                 }
             }
-            Debug.Log(_starsCount);
         }
         
         public bool TryIncreaseChapterLevelIndex(int count = 1)

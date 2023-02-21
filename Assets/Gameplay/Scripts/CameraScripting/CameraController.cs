@@ -21,7 +21,7 @@ namespace Gameplay.Scripts.CameraScripting
 
         public void ChangeTargetWithoutAnimation(Transform target, CameraSide cameraSide)
         {
-            _camera.transform.SetParent(target);
+            SetCameraParent(target);
             _camera.transform.localPosition = _cameraConfig.GetPositionForCamera(cameraSide);
             _camera.transform.LookAt(target);
         }
@@ -29,7 +29,7 @@ namespace Gameplay.Scripts.CameraScripting
         public void ChangeTarget(Transform target, CameraSide cameraSide)
         {
             _disposables.Clear();
-            _camera.transform.SetParent(target);
+            SetCameraParent(target);
             ChangeCameraPosition(cameraSide);
         }
 
@@ -39,6 +39,17 @@ namespace Gameplay.Scripts.CameraScripting
                 _cameraConfig.CameraMoveDuration);
             if (withLookAt == false) return;
             _camera.transform.DODynamicLookAt(_camera.transform.parent.position, _cameraConfig.CameraMoveDuration);
+        }
+
+        public void SetCameraParent(Transform parent)
+        {
+            _camera.transform.SetParent(parent);
+        }
+
+        public void SetCameraParentPos()
+        {
+            _camera.transform.localPosition = Vector3.zero;
+            _camera.transform.localRotation = Quaternion.Euler(Vector3.zero);
         }
 
         public void Dispose()

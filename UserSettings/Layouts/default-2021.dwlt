@@ -120,7 +120,7 @@ MonoBehaviour:
   m_MinSize: {x: 400, y: 200}
   m_MaxSize: {x: 32384, y: 16192}
   vertical: 0
-  controlID: 2310
+  controlID: 97
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -145,7 +145,7 @@ MonoBehaviour:
   m_MinSize: {x: 100, y: 200}
   m_MaxSize: {x: 8096, y: 16192}
   vertical: 1
-  controlID: 2311
+  controlID: 130
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -224,7 +224,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 200}
   m_MaxSize: {x: 16192, y: 16192}
   vertical: 1
-  controlID: 2291
+  controlID: 109
 --- !u!114 &10
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -249,7 +249,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 100}
   m_MaxSize: {x: 16192, y: 8096}
   vertical: 0
-  controlID: 2292
+  controlID: 110
 --- !u!114 &11
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -536,9 +536,9 @@ MonoBehaviour:
       floating: 0
       collapsed: 0
       displayed: 1
-      snapOffset: {x: 67.5, y: 0}
-      snapOffsetDelta: {x: 0, y: 0}
-      snapCorner: 0
+      snapOffset: {x: 67.5, y: -29}
+      snapOffsetDelta: {x: 0, y: -24}
+      snapCorner: 2
       id: Orientation
       index: 0
       layout: 4
@@ -673,9 +673,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 1.5469728, y: 1.1726259, z: -0.66160756}
+    m_Target: {x: 9.748595, y: 11.208836, z: 87.41707}
     speed: 2
-    m_Value: {x: 1.5469728, y: 1.1726259, z: -0.66160756}
+    m_Value: {x: 9.748595, y: 11.208836, z: 87.41707}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -722,13 +722,13 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: -0.11848908, y: -0.73863876, z: 0.13458167, w: -0.6498267}
+    m_Target: {x: -0.031410247, y: 0.96760434, z: -0.19744608, w: -0.15423769}
     speed: 2
-    m_Value: {x: -0.11848826, y: -0.73863363, z: 0.13458075, w: -0.64982224}
+    m_Value: {x: -0.031409953, y: 0.9675952, z: -0.19744422, w: -0.15423624}
   m_Size:
-    m_Target: 1.7431654
+    m_Target: 12.124355
     speed: 2
-    m_Value: 1.7431654
+    m_Value: 12.124355
   m_Ortho:
     m_Target: 0
     speed: 2
@@ -746,7 +746,7 @@ MonoBehaviour:
     m_FarClip: 10000
     m_DynamicClip: 1
     m_OcclusionCulling: 0
-  m_LastSceneViewRotation: {x: -0.08717229, y: 0.89959055, z: -0.21045254, w: -0.3726226}
+  m_LastSceneViewRotation: {x: -0.30034977, y: 0.5331642, z: -0.21009819, w: -0.7624972}
   m_LastSceneViewOrtho: 0
   m_ReplacementShader: {fileID: 0}
   m_ReplacementString: 
@@ -883,21 +883,21 @@ MonoBehaviour:
       scrollPos: {x: 0, y: 0}
       m_SelectedIDs: 
       m_LastClickedID: 0
-      m_ExpandedIDs: 780dfdff840dfdffb80efdffbe0efdfff2b1fdff0ab3fdff10b3fdff0033feff0c33feff2434feff2a34feff1c5effff0c5fffff125fffff2efbffff
+      m_ExpandedIDs: 2e45feff5c45feff0e59feffbe97feffc897fefff2e6feff10e8feffb618ffffdc3dffffd43fffffd63fffff0448ffffdc86ffff1e87ffffea98ffffbac6ffffd8c6ffff3cc7ffff44c7ffff46c7ffff2efbffff
       m_RenameOverlay:
         m_UserAcceptedRename: 0
-        m_Name: 
-        m_OriginalName: 
+        m_Name: Tarelka_Borshchu
+        m_OriginalName: Tarelka_Borshchu
         m_EditFieldRect:
           serializedVersion: 2
           x: 0
           y: 0
           width: 0
           height: 0
-        m_UserData: 0
+        m_UserData: -150528
         m_IsWaitingForDelay: 0
         m_IsRenaming: 0
-        m_OriginalEventType: 11
+        m_OriginalEventType: 4
         m_IsRenamingFilename: 0
         m_ClientGUIView: {fileID: 11}
       m_SearchString: 
@@ -949,36 +949,36 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/UI/Images/IngredientSprites
+    - Assets/Gameplay/Prefabs/Chapters
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 16
   m_LastFolders:
-  - Assets/UI/Images/IngredientSprites
+  - Assets/Gameplay/Prefabs/Chapters
   m_LastFoldersGridSize: 16
   m_LastProjectPath: G:\Unity\CookRun
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 399}
-    m_SelectedIDs: 4c810000
-    m_LastClickedID: 33100
-    m_ExpandedIDs: 00000000da7e0000dc7e0000de7e0000e07e0000e27e0000e47e0000e67e0000e87e0000ea7e0000ec7e0000ee7e0000f07e0000f27e0000f47e0000f67e000000ca9a3b
+    scrollPos: {x: 0, y: 95}
+    m_SelectedIDs: c87f0000
+    m_LastClickedID: 32712
+    m_ExpandedIDs: 00000000ba7f0000bc7f0000be7f0000c07f0000c27f0000c47f0000c67f0000c87f0000ca7f0000cc7f0000ce7f0000d07f0000d27f0000d47f0000d67f000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
-      m_Name: Player
-      m_OriginalName: Player
+      m_Name: 
+      m_OriginalName: 
       m_EditFieldRect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 0
         height: 0
-      m_UserData: 33050
+      m_UserData: 0
       m_IsWaitingForDelay: 0
       m_IsRenaming: 0
-      m_OriginalEventType: 0
+      m_OriginalEventType: 11
       m_IsRenamingFilename: 1
       m_ClientGUIView: {fileID: 12}
     m_SearchString: 
@@ -992,7 +992,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000da7e0000dc7e0000de7e0000e07e0000e27e0000e47e0000e67e0000e87e0000ea7e0000ec7e0000ee7e0000f07e0000f27e0000f47e0000f67e000000ca9a3b
+    m_ExpandedIDs: 00000000ba7f0000bc7f0000be7f0000c07f0000c27f0000c47f0000c67f0000c87f0000ca7f0000cc7f0000ce7f0000d07f0000d27f0000d47f0000d67f0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1023,18 +1023,18 @@ MonoBehaviour:
     m_ExpandedInstanceIDs: c6230000287c0000dc7f000054810000c6810000c8810000000000003a78000090770000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
-      m_Name: 
-      m_OriginalName: 
+      m_Name: DishesConfig
+      m_OriginalName: DishesConfig
       m_EditFieldRect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 0
         height: 0
-      m_UserData: 0
+      m_UserData: 30506
       m_IsWaitingForDelay: 0
       m_IsRenaming: 0
-      m_OriginalEventType: 11
+      m_OriginalEventType: 0
       m_IsRenamingFilename: 1
       m_ClientGUIView: {fileID: 12}
     m_CreateAssetUtility:

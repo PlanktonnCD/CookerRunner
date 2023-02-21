@@ -71,8 +71,8 @@ namespace UI.Scripts.CheckDishScreen
             _score = args.Score;
             _chapter = _dataManager.UserProfileData.ChapterInfoModel.ChosenChapter;
             _level = _dataManager.UserProfileData.ChapterInfoModel.ChosenLevel;
-            SetIngredientsImages(View.PositiveIngredientImagesPool, _dish.RequireIngredients, _ingredients);
-            SetIngredientsImages(View.AdditionalScoreIngredientImagesPool, _dish.AdditionalScoreIngredients, _ingredients);
+            SetIngredientsImages(View.PositiveIngredientImagesPool, _dish.RequireIngredients);
+            SetIngredientsImages(View.AdditionalScoreIngredientImagesPool, _dish.AdditionalScoreIngredients);
 
             List<IngredientsName> neededIngredientsList = new List<IngredientsName>();
             foreach (var ingredient in _dish.RequireIngredients)
@@ -84,7 +84,7 @@ namespace UI.Scripts.CheckDishScreen
                 neededIngredientsList.Add(ingredient);
             }
             
-            SetIngredientsImages(View.StoredIngredientImagesPool, _ingredients, neededIngredientsList);
+            SetIngredientsImages(View.StoredIngredientImagesPool, _ingredients);
         }
 
         public override async UniTask OnShow()
@@ -109,7 +109,7 @@ namespace UI.Scripts.CheckDishScreen
             View.ComebackButton.gameObject.SetActive(true);
         }
 
-        private void SetIngredientsImages(MonoBehaviourPool<IngredientImage> pool, List<IngredientsName> ingredientsNames, List<IngredientsName> checkList)
+        private void SetIngredientsImages(MonoBehaviourPool<IngredientImage> pool, List<IngredientsName> ingredientsNames)
         {
             foreach (var ingredient in ingredientsNames)
             {
@@ -209,14 +209,14 @@ namespace UI.Scripts.CheckDishScreen
         {
             View.ScoreText.gameObject.SetActive(true);
             var realScore = _score * (_accuracyScoreMultiplier * _timeScoreMultiplier * _additionalScoreMultiplier);
-            var scoreForStars = _chapterConfig.GetScoreForStarsByDishName(_dishName);
+            var levelInitializer = _chapterConfig.GetLevelByDishName(_dishName);
             int stars = 0;
             int visibleScore = 0;
             do
             {
                 View.ScoreText.text = visibleScore.ToString("0.");
                 visibleScore += 1;
-                if (stars < scoreForStars.Count && scoreForStars[stars] == visibleScore)
+                if (stars < levelInitializer.ScoreForStars.Count && levelInitializer.ScoreForStars[stars] == visibleScore)
                 {
                     View.StarsImages[stars++].color = Color.white;
                 }

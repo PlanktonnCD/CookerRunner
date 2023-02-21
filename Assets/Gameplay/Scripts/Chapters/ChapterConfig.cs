@@ -35,7 +35,7 @@ namespace Gameplay.Scripts.Chapters
             return default;
         }
 
-        public List<int> GetScoreForStarsByDishName(DishName dishName)
+        public LevelInitializer GetLevelByDishName(DishName dishName)
         {
             foreach (var chapter in _chapters)
             {
@@ -43,12 +43,12 @@ namespace Gameplay.Scripts.Chapters
                 {
                     if (level.DishOnLevel == dishName)
                     {
-                        return level.ScoreForStars;
+                        return level;
                     }
                 }
             }
 
-            return new List<int>();
+            return default;
         }
     }
 
