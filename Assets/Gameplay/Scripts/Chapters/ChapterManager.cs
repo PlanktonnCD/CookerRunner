@@ -23,7 +23,11 @@ namespace Gameplay.Scripts.Chapters
         }
 
         public void CreateLevel(int levelIndex, int chapterIndex)
-        { 
+        {
+            if (_currentLevel != null)
+            {
+                Release();
+            }
             _dataManager.UserProfileData.ChapterInfoModel.ChooseChapterAndLevel(levelIndex, chapterIndex);
             _currentLevel = _chapterFactory.Create(levelIndex, chapterIndex , transform);
             _currentLevel.SpawnPlayer(_playerPrefab);
@@ -34,7 +38,7 @@ namespace Gameplay.Scripts.Chapters
             CreateLevel(_dataManager.UserProfileData.ChapterInfoModel.CurrentLevelprogress, _dataManager.UserProfileData.ChapterInfoModel.CurrentChapterProgress);
         }
 
-        public void Release()
+        private void Release()
         {
             _currentLevel.Release();
             Destroy(_currentLevel.gameObject);

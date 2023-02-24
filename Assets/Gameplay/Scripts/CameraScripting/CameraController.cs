@@ -26,6 +26,11 @@ namespace Gameplay.Scripts.CameraScripting
             _camera.transform.LookAt(target);
         }
 
+        public void SetDefaultParent()
+        {
+            _camera.transform.parent = null;
+        }
+        
         public void ChangeTarget(Transform target, CameraSide cameraSide)
         {
             _disposables.Clear();

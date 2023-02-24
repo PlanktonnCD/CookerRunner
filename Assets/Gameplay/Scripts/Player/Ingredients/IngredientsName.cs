@@ -4,13 +4,24 @@ namespace Gameplay.Scripts.Player.Ingredients
     {
         cabbage,
         carrot,
-        chocolate,
+        beetroot,
         potato,
         flour,
         tomato,
         cheese,
         orange,
         apple,
-        meat
+        meat,
+        onion,
+        garlick,
+        cottage_cheese,
+        cherry,
+        butter,
+        egg,
+        rice,
+        mushrooms,
+        sausage,
+        milk,
+        moohomore,
     }
 }

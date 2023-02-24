@@ -1,12 +1,13 @@
 ﻿using System;
 using Cysharp.Threading.Tasks;
 using DG.Tweening;
+using Pool;
 using UnityEngine;
 using UnityEngine.UI;
 
 namespace UI.Scripts.CheckDishScreen
 {
-    public class IngredientImage : MonoBehaviour
+    public class IngredientImage : MonoBehaviour, IPoolable
     {
         [SerializeField] private Image _ingredientImage;
         [SerializeField] private Image _successObtainImage;
@@ -22,17 +23,26 @@ namespace UI.Scripts.CheckDishScreen
         {
             if (isObtained == true)
             {
+                if(_successObtainImage.enabled == true) return;
+                
                 _successObtainImage.enabled = true;
                 _successObtainImage.transform.DOScale(Vector3.one, 0.5f).From(Vector3.one * 1.5f).SetEase(Ease.Linear);
                 _failObtainImage.enabled = false;
                 await UniTask.Delay(TimeSpan.FromSeconds(0.25f));
                 return;
             }
-
+            
+            if(_failObtainImage.enabled == true) return;
             _successObtainImage.enabled = false;
             _failObtainImage.enabled = true;
             _failObtainImage.transform.DOScale(Vector3.one, 0.5f).From(Vector3.one * 1.5f).SetEase(Ease.Linear);
             await UniTask.Delay(TimeSpan.FromSeconds(0.25f));
+        }
+
+        public void Release()
+        {
+            _successObtainImage.enabled = false;
+            _failObtainImage.enabled = false;
         }
     }
 }

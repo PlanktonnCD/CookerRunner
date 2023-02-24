@@ -16,6 +16,18 @@ namespace UI.Scripts.RunningScreen
             
         }
 
+        public override async UniTask OnShow()
+        {
+            View.DishSmallRecipe.SetCurrentDishRecipe();
+            await base.OnShow();
+        }
+
+        public override async UniTask OnHide()
+        {
+            View.DishSmallRecipe.Release();
+            await base.OnHide();
+        }
+
         private void SetScoreText(int score)
         {
             View.ScoreText.text = score.ToString();

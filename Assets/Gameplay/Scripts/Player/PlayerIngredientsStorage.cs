@@ -45,12 +45,12 @@ namespace Gameplay.Scripts.Player
         
         public void PickUpIngredient(List<Transform> ingredientTransforms, IngredientsName ingredientsName, bool isSlice)
         {
-            GetIngredient();
             _currentIngredient = new IngredientObject()
             {
                 Name = ingredientsName,
                 Transforms = ingredientTransforms
             };
+            GetIngredient();
             if (isSlice)
             {
                 _animationController.StartAnimation(new Trigger<PlayerAnimationType>(), PlayerAnimationType.Slice);
@@ -77,6 +77,7 @@ namespace Gameplay.Scripts.Player
             ingredientTransform.parent = transform;
             var xDelta = Random.Range(-0.5f, 0.5f);
             var seq = DOTween.Sequence();
+            ingredientTransform.DOScale(ingredientTransform.localScale * 0.5f, 2).SetEase(Ease.Linear);
             switch (direction)
             {
                 case IngredientFlyingDirection.Left:

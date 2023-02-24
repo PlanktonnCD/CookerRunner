@@ -14,7 +14,7 @@ namespace UI.Scripts.MainMenuScreen
         [SerializeField] private Button _button;
         [SerializeField] private int _chapter;
         [SerializeField] private int _level;
-        [SerializeField] private List<Image> _starsImages;
+        [SerializeField] private List<StarImage> _starsImages;
         private UIManager _uiManager;
         private DataManager _dataManager;
 
@@ -39,7 +39,7 @@ namespace UI.Scripts.MainMenuScreen
         public void SetAvailable()
         {
             _button.interactable = true;
-            _dishImage.color = Color.black;
+            _dishImage.color = Color.white;
         }
 
         public void SetCompleted()
@@ -48,7 +48,7 @@ namespace UI.Scripts.MainMenuScreen
             _dishImage.color = Color.white;
             for (int i = 0; i < _dataManager.UserProfileData.ChapterInfoModel.GetHighscoreForLevel(_chapter, _level).Stars; i++)
             {
-                _starsImages[i].color = Color.white;
+                _starsImages[i].ActivateStar();
             }
         }
         

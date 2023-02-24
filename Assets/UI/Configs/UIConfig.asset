@@ -49,3 +49,10 @@ MonoBehaviour:
       GUID: 82329ab78647448390780d0f00c0e8b3
       _typeNameAndAssembly: UI.Scripts.RecipeWindow.RecipeWindowController, Assembly-CSharp
       _suppressLogs: 0
+  - Prefab: {fileID: 5338642972015471356, guid: c4a9c3b892827204f9fe62ed389af2c4,
+      type: 3}
+    ClassReference:
+      GuidAssignmentFailed: 0
+      GUID: 3aefb3c0463943698ab99edc6012f601
+      _typeNameAndAssembly: UI.Scripts.LoseWindow.LoseWindowController, Assembly-CSharp
+      _suppressLogs: 0

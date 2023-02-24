@@ -10,10 +10,10 @@ namespace UI.Scripts.CheckDishScreen
     {
         [field: SerializeField] public MonoBehaviourPool<IngredientImage> PositiveIngredientImagesPool { get; private set; }
         [field: SerializeField] public MonoBehaviourPool<IngredientImage> AdditionalScoreIngredientImagesPool { get; private set; }
-        [field: SerializeField] public MonoBehaviourPool<IngredientImage> StoredIngredientImagesPool { get; private set; }
         [field: SerializeField] public TextMeshProUGUI AccuracyDishText { get; private set; }
+        [field: SerializeField] public TextMeshProUGUI DishNameText { get; private set; }
         [field: SerializeField] public TextMeshProUGUI ScoreText { get; private set; }
         [field: SerializeField] public Button ComebackButton { get; private set; }
-        [field: SerializeField] public List<Image> StarsImages { get; private set; }
+        [field: SerializeField] public List<StarImage> StarsImages { get; private set; }
     }
 }

@@ -20,15 +20,6 @@ namespace UI.Scripts.BeforeStartScreen
             _signalBus = signalBus;
         }
 
-        public override void Init(UIScreen uiScreen)
-        {
-            base.Init(uiScreen);
-            View.DishRecipeButton.onClick.AddListener((() =>
-            {
-                _uiManager.Show<RecipeWindowController>();
-            }));
-        }
-
         public override void Display(UIArgumentsForPanels arguments)
         {
             base.Display(arguments);
@@ -43,6 +34,7 @@ namespace UI.Scripts.BeforeStartScreen
 
         public override async UniTask OnShow()
         {
+            View.DishSmallRecipe.SetCurrentDishRecipe();
             await base.OnShow();
             _uiManager.Show<RecipeWindowController>();
             View.TriggerToStart.OnPointerDown.AddListener(x =>
@@ -54,6 +46,7 @@ namespace UI.Scripts.BeforeStartScreen
         public override async UniTask OnHide()
         {
             View.TriggerToStart.OnPointerDown.RemoveAllListeners();
+            View.DishSmallRecipe.Release();
             await base.OnHide();
         }
     }

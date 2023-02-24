@@ -16,37 +16,24 @@ namespace Gameplay.Scripts.DataProfiling.Models
         [JsonProperty] private int _chosenChapter = 1;
         [JsonIgnore] public int ChosenLevel => _chosenLevel;
         [JsonProperty] private int _chosenLevel = 1;
-        
-        [JsonIgnore] private Dictionary<int, int> _countLevelsInChapter =  new ()
-        {
-            [1] = 4,
-            [2] = 4
-        };
+
+        [JsonIgnore] private int _countLevelsInChapter = 5;
 
         [JsonProperty] private Dictionary<int, ChapterHighscores> _highscores = new Dictionary<int, ChapterHighscores>();
-        
-        [JsonIgnore] public int StarsCount => _starsCount;
-        [JsonIgnore] private int _starsCount;
 
         public void Initialize()
         {
-            foreach (var highscores in _highscores)
-            {
-                foreach (var highscore in highscores.Value.Highscores)
-                {
-                    _starsCount += highscore.Stars;
-                }
-            }
+            
         }
         
         public bool TryIncreaseChapterLevelIndex(int count = 1)
         {
-            if (_chosenChapter != _currentChapterProgress && _chosenLevel != _currentLevelProgress)
+            if (_chosenChapter != _currentChapterProgress || _chosenLevel != _currentLevelProgress)
             {
                 return false;
             }
             
-            if (_currentLevelProgress >= _countLevelsInChapter[_currentChapterProgress])
+            if (_currentLevelProgress >= _countLevelsInChapter)
             {
                 IncreaseChapterIndex();
                 return false;
@@ -58,7 +45,7 @@ namespace Gameplay.Scripts.DataProfiling.Models
 
         private void IncreaseChapterIndex(int count = 1)
         {
-            if(_currentChapterProgress + count > _countLevelsInChapter.Count) return;
+            if(_currentChapterProgress + count > _countLevelsInChapter) return;
             _currentChapterProgress += count;
             _currentLevelProgress = 1;
         }
@@ -96,6 +83,20 @@ namespace Gameplay.Scripts.DataProfiling.Models
         {
             _chosenChapter = chapter;
             _chosenLevel = level;
+        }
+
+        public int GetStarsCount()
+        {
+            int starsCount = 0;
+            foreach (var highscores in _highscores)
+            {
+                foreach (var highscore in highscores.Value.Highscores)
+                {
+                    starsCount += highscore.Stars;
+                }
+            }
+
+            return starsCount;
         }
     }
 

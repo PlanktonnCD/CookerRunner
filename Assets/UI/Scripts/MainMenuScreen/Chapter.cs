@@ -39,7 +39,7 @@ namespace UI.Scripts.MainMenuScreen
         {
             _closeImage.gameObject.SetActive(false);
             var chapterInfoModel = _dataManager.UserProfileData.ChapterInfoModel;
-            if (chapterInfoModel.StarsCount < _chapterConfig.GetChapterByIndex(_index).StarsForOpen)
+            if (chapterInfoModel.GetStarsCount() < _chapterConfig.GetChapterByIndex(_index).StarsForOpen)
             {
                 _closeImage.gameObject.SetActive(true);
             }

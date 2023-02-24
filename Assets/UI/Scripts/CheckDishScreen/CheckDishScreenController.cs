@@ -8,6 +8,7 @@ using Gameplay.Scripts.Dishes;
 using Gameplay.Scripts.Player.Ingredients;
 using Pool;
 using UI.Scripts.BeforeStartScreen;
+using UI.Scripts.LoseWindow;
 using UI.Scripts.MainMenuScreen;
 using UnityEngine;
 using UnityEngine.UI;
@@ -32,12 +33,12 @@ namespace UI.Scripts.CheckDishScreen
         private DataManager _dataManager;
         private int _chapter;
         private int _level;
-        private ChapterManager _chapterManager;
+        private Action _chefHelpAction;
+        private float _additionalAccuracy;
 
         [Inject]
-        private void Construct(DishesConfig dishesConfig, IngredientsConfig ingredientsConfig, ChapterConfig chapterConfig, UIManager uiManager, ChapterManager chapterManager, DataManager dataManager)
+        private void Construct(DishesConfig dishesConfig, IngredientsConfig ingredientsConfig, ChapterConfig chapterConfig, UIManager uiManager, DataManager dataManager)
         {
-            _chapterManager = chapterManager;
             _dataManager = dataManager;
             _chapterConfig = chapterConfig;
             _uiManager = uiManager;
@@ -48,15 +49,10 @@ namespace UI.Scripts.CheckDishScreen
         public override void Init(UIScreen uiScreen)
         {
             base.Init(uiScreen);
+            _chefHelpAction += ChefHelp;
             View.ComebackButton.onClick.AddListener((() =>
             {
-                _chapterManager.Release();
-                if (_dataManager.UserProfileData.ChapterInfoModel.TryIncreaseChapterLevelIndex() == true)
-                {
-                    
-                    _uiManager.Show<BeforeStartScreenController>();
-                    return;
-                }
+                _dataManager.UserProfileData.ChapterInfoModel.TryIncreaseChapterLevelIndex();
                 _uiManager.Show<MainMenuScreenController>();
             }));
         }
@@ -65,26 +61,16 @@ namespace UI.Scripts.CheckDishScreen
         {
             base.Display(arguments);
             var args = (CheckDishScreenArguments)arguments;
+            _additionalAccuracy = 0;
             _dishName = args.DishName;
             _dish = _dishesConfig.GetDishByName(_dishName);
             _ingredients = args.Ingredients;
             _score = args.Score;
             _chapter = _dataManager.UserProfileData.ChapterInfoModel.ChosenChapter;
             _level = _dataManager.UserProfileData.ChapterInfoModel.ChosenLevel;
+            View.DishNameText.text = _dish.Name;
             SetIngredientsImages(View.PositiveIngredientImagesPool, _dish.RequireIngredients);
             SetIngredientsImages(View.AdditionalScoreIngredientImagesPool, _dish.AdditionalScoreIngredients);
-
-            List<IngredientsName> neededIngredientsList = new List<IngredientsName>();
-            foreach (var ingredient in _dish.RequireIngredients)
-            {
-                neededIngredientsList.Add(ingredient);
-            }
-            foreach (var ingredient in _dish.AdditionalScoreIngredients)
-            {
-                neededIngredientsList.Add(ingredient);
-            }
-            
-            SetIngredientsImages(View.StoredIngredientImagesPool, _ingredients);
         }
 
         public override async UniTask OnShow()
@@ -98,11 +84,18 @@ namespace UI.Scripts.CheckDishScreen
 
         private async void CheckDish()
         {
+            _isLose = false;
             await CheckExistenceRequiredIngredients();
+            if (_isLose == true)
+            {
+                ToLoseWindow();
+                return;
+            }
             await CalculateAdditionalIngredientsMultiplier();
             await CheckDishAccuracy();
             if (_isLose == true)
             {
+                ToLoseWindow();
                 return;
             }
             await CalculateScore();
@@ -173,8 +166,7 @@ namespace UI.Scripts.CheckDishScreen
                     correctIngredients++;
                 }
             }
-
-            float accuracy = (float)correctIngredients / (float)_ingredients.Count * 100;
+            float accuracy = (((float)correctIngredients / (float)_ingredients.Count) * 100) + _additionalAccuracy;
             float visibleAccuracy = 0;
             View.AccuracyDishText.gameObject.SetActive(true);
             do
@@ -218,22 +210,64 @@ namespace UI.Scripts.CheckDishScreen
                 visibleScore += 1;
                 if (stars < levelInitializer.ScoreForStars.Count && levelInitializer.ScoreForStars[stars] == visibleScore)
                 {
-                    View.StarsImages[stars++].color = Color.white;
+                    View.StarsImages[stars++].ActivateStar();
                 }
                 await UniTask.Delay(TimeSpan.FromMilliseconds(0.05f));
             } while (visibleScore <= realScore);
             _dataManager.UserProfileData.ChapterInfoModel.SetHighscore(_chapter, _level, visibleScore, stars);
         }
 
+        private void ChefHelp()
+        {
+            var dictionary = new Dictionary<IngredientsName, bool>();
+            foreach (var requireIngredient in _dish.RequireIngredients)
+            {
+                dictionary.Add(requireIngredient, _ingredients.Contains(requireIngredient));
+            }
+
+            foreach (var ingredient in dictionary)
+            {
+                if (ingredient.Value == false)
+                {
+                    _ingredients.Add(ingredient.Key);
+                }
+            }
+            
+            int correctIngredients = 0;
+            foreach (var ingredient in _ingredients)
+            {
+                if (_dish.RequireIngredients.Contains(ingredient) || _dish.AdditionalScoreIngredients.Contains(ingredient))
+                {
+                    correctIngredients++;
+                }
+            }
+            
+            float accuracy = (((float)correctIngredients / (float)_ingredients.Count) * 100);
+            
+            if (accuracy < 50)
+            {
+                _additionalAccuracy = 50;
+            }
+            
+            CheckDish();
+        }
+
+        private void ToLoseWindow()
+        {
+            var args = new LoseWindowArguments(_chefHelpAction);
+            _uiManager.Show<LoseWindowController>(args);
+        }
+        
         public override async UniTask OnHide()
         {
             await base.OnHide();
             View.PositiveIngredientImagesPool.ReturnAll();
-            View.StoredIngredientImagesPool.ReturnAll();
             View.AdditionalScoreIngredientImagesPool.ReturnAll();
+            View.PositiveIngredientImagesPool.ReleaseAll();
+            View.AdditionalScoreIngredientImagesPool.ReleaseAll();
             foreach (var starsImage in View.StarsImages)
             {
-                starsImage.color = Color.black;
+                starsImage.DeactivateStar();
             }
             View.ScoreText.text = String.Empty;
             _score = 0;

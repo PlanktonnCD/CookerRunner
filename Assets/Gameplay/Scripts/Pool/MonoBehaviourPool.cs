@@ -50,14 +50,13 @@ namespace Pool
             }
         }
 
-        /*
+        
         public void ReleaseAll()
         {
             foreach (var monoBehaviour in _poolList)
             {
                 ((IPoolable)monoBehaviour).Release();
             }
-            _poolList.Clear();
-        }*/
+        }
     }
 }

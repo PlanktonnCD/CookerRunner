@@ -25,6 +25,7 @@ namespace UI.Scripts.MainMenuScreen
 
         public override async UniTask OnShow()
         {
+            View.StarsCountText.text = _dataManager.UserProfileData.ChapterInfoModel.GetStarsCount().ToString();
             await base.OnShow();
             foreach (var chapter in View.Chapters)
             {
@@ -40,7 +41,7 @@ namespace UI.Scripts.MainMenuScreen
                 chapter.UpdateState();
             }
 
-            View.StarsCountText.text = _dataManager.UserProfileData.ChapterInfoModel.StarsCount.ToString();
+            View.StarsCountText.text = _dataManager.UserProfileData.ChapterInfoModel.GetStarsCount().ToString();
         }
         
     }

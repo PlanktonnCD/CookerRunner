@@ -4,7 +4,13 @@ namespace Gameplay.Scripts.Dishes
     {
         borsch,
         pizza,
-        applePie,
-        chocolateCake,
+        vareniki,
+        shpundra,
+        cabbage_rolls,
+        ukrainian_pancakes,
+        lasagnia,
+        pasta,
+        minestrone,
+        neapolitan_pastiera,
     }
 }

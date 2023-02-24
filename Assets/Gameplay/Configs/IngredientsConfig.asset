@@ -13,15 +13,25 @@ MonoBehaviour:
   m_Name: IngredientsConfig
   m_EditorClassIdentifier: 
   _ingredients:
-    _keys: 00000000010000000200000003000000040000000500000006000000070000000800000009000000
+    _keys: 000000000100000002000000030000000400000005000000060000000700000008000000090000000a0000000b0000000c0000000d0000000e0000000f00000010000000110000001200000013000000
     _values:
-    - Sprite: {fileID: 21300000, guid: bcdb5b33882deaf49a789fae967bb869, type: 3}
-    - Sprite: {fileID: 21300000, guid: 3306014545992d043b3cd84fac400d24, type: 3}
-    - Sprite: {fileID: 0}
-    - Sprite: {fileID: 21300000, guid: 962565e24200042439070037fe9eb55f, type: 3}
-    - Sprite: {fileID: 0}
-    - Sprite: {fileID: 21300000, guid: dcdf3cd75c8f86e4bbe8397b76018bfd, type: 3}
-    - Sprite: {fileID: 0}
-    - Sprite: {fileID: 21300000, guid: a2880a4d0a9047145bad05b23564c115, type: 3}
+    - Sprite: {fileID: 21300000, guid: 6d7956ff3571f9d41a760d59dce5628c, type: 3}
+    - Sprite: {fileID: 21300000, guid: fbf9c9d78008cdc4a854c9f3b225e0a1, type: 3}
+    - Sprite: {fileID: 21300000, guid: b2b87ebd6eb0b134ea6f42238ed27d03, type: 3}
+    - Sprite: {fileID: 21300000, guid: 7601c3f8bc6e5f7469340cafb918c172, type: 3}
+    - Sprite: {fileID: 21300000, guid: d028385605aef8f4bbd53f5493258d71, type: 3}
+    - Sprite: {fileID: 21300000, guid: 8abc5571386ba264d96da1e57e7777a7, type: 3}
+    - Sprite: {fileID: 21300000, guid: 8ee9d124b1c20884487e9e3bf93a9b96, type: 3}
+    - Sprite: {fileID: 21300000, guid: 00938f7f39623c5419bb58f5bfd41efe, type: 3}
     - Sprite: {fileID: 21300000, guid: 861058fdac0a8f1449d63f10cc3390a9, type: 3}
-    - Sprite: {fileID: 21300000, guid: 096407842fb16974daf295814069121b, type: 3}
+    - Sprite: {fileID: 21300000, guid: 7ed9ff7aec972e54295d687667ea38fc, type: 3}
+    - Sprite: {fileID: 21300000, guid: 4c49f4633585cdb44bb6c98afffbd520, type: 3}
+    - Sprite: {fileID: 21300000, guid: 964f07b246d0653488b5a2055b0d7c7d, type: 3}
+    - Sprite: {fileID: 21300000, guid: 066e93d6d6c402246845972a84b1f9b8, type: 3}
+    - Sprite: {fileID: 21300000, guid: 658ec6451738eba4a88a2fab9b6fb28f, type: 3}
+    - Sprite: {fileID: 21300000, guid: 7d5ac7939bfdf1b4d9a541c1ad06ec55, type: 3}
+    - Sprite: {fileID: 21300000, guid: eba62c23fd655e141a9d4bb1658ce206, type: 3}
+    - Sprite: {fileID: 21300000, guid: bdec78ff037bb7a4f99f76c142ecef2e, type: 3}
+    - Sprite: {fileID: 21300000, guid: 6e05bdd030f7b4a4eb2db0791cc5a81e, type: 3}
+    - Sprite: {fileID: 21300000, guid: 75b5f5ef70e76a440a09320e555887e1, type: 3}
+    - Sprite: {fileID: 21300000, guid: deef85eabb6ec7544b0fcc2525854d2e, type: 3}
