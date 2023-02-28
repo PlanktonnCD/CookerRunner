@@ -47,8 +47,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8675d9ee481c4396904deaf90eb78a7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _trackOnPickName: 0
   _hudOnLocation: {fileID: 0}
+  _trackOnPick: 8
   _ingredientsName: 4
   _isSlice: 0
   _1stSlicedPart: {fileID: 7922311566181677685}

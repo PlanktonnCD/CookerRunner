@@ -11,19 +11,9 @@ namespace Gameplay.Scripts.PickUp
 {
     public class PickUpItem : MonoBehaviour
     {
-        [SerializeField] protected TrackName _trackOnPickName;
         [SerializeField] private GameObject _hudOnLocation;
     
         private float _moveDuration = 0.1f;
-        protected AudioManager _audioManager;
-        protected DataManager _dataManager;
-
-        [Inject]
-        private void Construct(AudioManager audioManager, DataManager dataManager)
-        {
-            _audioManager = audioManager;
-            _dataManager = dataManager;
-        }
 
         private void Start()
         {
@@ -36,7 +26,6 @@ namespace Gameplay.Scripts.PickUp
         protected virtual UniTask OnPickUp(PlayerIngredientsStorage player)
         {
             if(_hudOnLocation != null) _hudOnLocation.SetActive(false);
-            //_audioManager.PlaySound(_trackOnPickName);
             Destroy(gameObject);
             return UniTask.CompletedTask;
         }

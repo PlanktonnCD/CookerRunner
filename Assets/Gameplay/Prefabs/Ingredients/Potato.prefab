@@ -48,8 +48,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8675d9ee481c4396904deaf90eb78a7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _trackOnPickName: 0
   _hudOnLocation: {fileID: 0}
+  _trackOnPick: 14
   _ingredientsName: 3
   _isSlice: 1
   _1stSlicedPart: {fileID: 9081221060770710782}

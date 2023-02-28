@@ -1,5 +1,8 @@
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
+using Audio;
+using Cysharp.Threading.Tasks;
 using DG.Tweening;
 using Gameplay.Scripts.Animation;
 using Gameplay.Scripts.Dishes;
@@ -24,10 +27,12 @@ namespace Gameplay.Scripts.Player
         private UIManager _uiManager;
         private AnimationController<PlayerAnimationType> _animationController;
         private IngredientObject _currentIngredient;
+        private AudioManager _audioManager;
 
         [Inject]
-        private void Construct(UIManager uiManager)
+        private void Construct(UIManager uiManager, AudioManager audioManager)
         {
+            _audioManager = audioManager;
             _uiManager = uiManager;
         }
         
@@ -43,15 +48,11 @@ namespace Gameplay.Scripts.Player
             _animationEventListener.OnAnimationEndAction += MoveIngedients;
         }
         
-        public void PickUpIngredient(List<Transform> ingredientTransforms, IngredientsName ingredientsName, bool isSlice)
+        public void PickUpIngredient(IngredientObject ingredientObject)
         {
-            _currentIngredient = new IngredientObject()
-            {
-                Name = ingredientsName,
-                Transforms = ingredientTransforms
-            };
+            _currentIngredient = ingredientObject;
             GetIngredient();
-            if (isSlice)
+            if (_currentIngredient.IsSlice)
             {
                 _animationController.StartAnimation(new Trigger<PlayerAnimationType>(), PlayerAnimationType.Slice);
                 return;
@@ -64,15 +65,24 @@ namespace Gameplay.Scripts.Player
         {
             if (_currentIngredient.Transforms.Count == 1)
             {
-                MoveIngredient(_currentIngredient.Transforms[0], IngredientFlyingDirection.Center);
+                _audioManager.PlaySound(TrackName.throw_sound);
+                MoveSolidIngredient();
                 return;
             }
             
+            _audioManager.PlaySound(_currentIngredient.TrackName);
             MoveIngredient(_currentIngredient.Transforms[0], IngredientFlyingDirection.Left);
             MoveIngredient(_currentIngredient.Transforms[1], IngredientFlyingDirection.Right);
         }
 
-        private void MoveIngredient(Transform ingredientTransform, IngredientFlyingDirection direction)
+        private async void MoveSolidIngredient()
+        {
+            var ingr = _currentIngredient;
+            await MoveIngredient(_currentIngredient.Transforms[0], IngredientFlyingDirection.Center);
+            _audioManager.PlaySound(ingr.TrackName);
+        }
+        
+        private async UniTask MoveIngredient(Transform ingredientTransform, IngredientFlyingDirection direction)
         {
             ingredientTransform.parent = transform;
             var xDelta = Random.Range(-0.5f, 0.5f);
@@ -111,6 +121,7 @@ namespace Gameplay.Scripts.Player
             {
                 Destroy(ingredientTransform.gameObject);
             }));
+            await UniTask.Delay(TimeSpan.FromSeconds(2f));
         }
         
         private void GetIngredient()
@@ -136,7 +147,9 @@ namespace Gameplay.Scripts.Player
     public struct IngredientObject
     {
         public IngredientsName Name;
+        public bool IsSlice;
         public List<Transform> Transforms;
+        public TrackName TrackName;
     }
 
     public enum IngredientFlyingDirection
