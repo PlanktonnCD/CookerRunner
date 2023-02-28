@@ -53,18 +53,30 @@ namespace UI.Scripts.MainMenuScreen
             }
             foreach (var levelButton in _levelButtons)
             {
-                if (chapterInfoModel.CurrentLevelprogress > _levelButtons.IndexOf(levelButton)+1)
-                {
-                    levelButton.SetCompleted();
-                }
-                else if (chapterInfoModel.CurrentLevelprogress == _levelButtons.IndexOf(levelButton)+1)
-                {
-                    levelButton.SetAvailable();
-                }
-                else
-                {
-                    levelButton.SetClosed();
-                }
+                SetLevelButton(levelButton);
+            }
+        }
+
+        private void SetLevelButton(LevelButton levelButton)
+        {
+            var chapterInfoModel = _dataManager.UserProfileData.ChapterInfoModel;
+            if (chapterInfoModel.CurrentChapterProgress > _index)
+            {
+                levelButton.SetCompleted();
+                return;
+            }
+
+            if (chapterInfoModel.CurrentLevelprogress > _levelButtons.IndexOf(levelButton) + 1)
+            {
+                levelButton.SetCompleted();
+            }
+            else if (chapterInfoModel.CurrentLevelprogress == _levelButtons.IndexOf(levelButton) + 1)
+            {
+                levelButton.SetAvailable();
+            }
+            else
+            {
+                levelButton.SetClosed();
             }
         }
     }
