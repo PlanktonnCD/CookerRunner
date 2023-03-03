@@ -11,9 +11,6 @@ namespace Gameplay.Scripts.DataProfiling
         public SettingsInfoModel SettingsInfoModel => _settingsInfoModel;
         private SettingsInfoModel _settingsInfoModel = new();
 
-        public CoinsInfoModel CoinsInfoModel => _coinsInfoModel;
-        private CoinsInfoModel _coinsInfoModel = new();
-        
         public ChapterInfoModel ChapterInfoModel => _chapterInfoModel;
         private ChapterInfoModel _chapterInfoModel = new();
 

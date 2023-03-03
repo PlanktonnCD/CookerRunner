@@ -264,7 +264,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: TRY AGAIN
+  m_text: "\u0421\u041F\u0420\u041E\u0411\u0423\u0419 \u0429\u0415"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 1f298b9bb1ec9144fa7103f559ad7eb1, type: 2}
   m_sharedMaterial: {fileID: 8235453745508211643, guid: 1f298b9bb1ec9144fa7103f559ad7eb1,
@@ -552,11 +552,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Retry
+  m_text: "\u041F\u043E\u0432\u0442\u043E\u0440\u0438\u0442\u0438"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 198fe974d997fb942a86e9ff4456d4ac, type: 2}
-  m_sharedMaterial: {fileID: 4065102726046408474, guid: 198fe974d997fb942a86e9ff4456d4ac,
-    type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 2f0d62973208a8d41b424a71fd8eea83, type: 2}
+  m_sharedMaterial: {fileID: 2100000, guid: a10e10325691f23478b67a20c6acebfc, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -580,8 +579,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 309.2
-  m_fontSizeBase: 309.2
+  m_fontSize: 120.5
+  m_fontSizeBase: 120.5
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -723,17 +722,17 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5493698664982874675}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: 0.056214944, w: 0.9984187}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7219980378056188077}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 6.445}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -46.338745, y: 0}
+  m_AnchoredPosition: {x: -6, y: -17}
   m_SizeDelta: {x: -92.6774, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1806510221181129850
@@ -764,10 +763,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Chief's\n          HELP"
+  m_text: "\u0414\u043E\u043F\u043E\u043C\u043E\u0433\u0430\n\n\t\u0428\u0415\u0424\u0410"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 198fe974d997fb942a86e9ff4456d4ac, type: 2}
-  m_sharedMaterial: {fileID: 4065102726046408474, guid: 198fe974d997fb942a86e9ff4456d4ac,
+  m_fontAsset: {fileID: 11400000, guid: 2f0d62973208a8d41b424a71fd8eea83, type: 2}
+  m_sharedMaterial: {fileID: 7684302814789425899, guid: 2f0d62973208a8d41b424a71fd8eea83,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -792,13 +791,13 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 224.8
-  m_fontSizeBase: 224.8
+  m_fontSize: 109.9
+  m_fontSizeBase: 109.9
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 1
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535

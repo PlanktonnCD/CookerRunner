@@ -24,22 +24,22 @@ MonoBehaviour:
       ScoreForStars: fa000000f4010000ee020000
     - Index: 2
       DishOnLevel: 2
-      Level: {fileID: 2453244184169100433, guid: 477bb43327c472848846e031f53a3b9f,
+      Level: {fileID: 2453244184169100433, guid: 6cb247076ea5b5243bc84a479935281e,
         type: 3}
       ScoreForStars: 960000005802000084030000
     - Index: 3
       DishOnLevel: 3
-      Level: {fileID: 2453244184169100433, guid: 477bb43327c472848846e031f53a3b9f,
+      Level: {fileID: 2453244184169100433, guid: c5c85195b24bde040a9f4272fffdb33c,
         type: 3}
       ScoreForStars: 960000005802000084030000
     - Index: 4
       DishOnLevel: 4
-      Level: {fileID: 2453244184169100433, guid: 477bb43327c472848846e031f53a3b9f,
+      Level: {fileID: 2453244184169100433, guid: 482611398a419754d92da240ab5e0cbf,
         type: 3}
       ScoreForStars: 960000005802000084030000
     - Index: 5
       DishOnLevel: 5
-      Level: {fileID: 2453244184169100433, guid: 477bb43327c472848846e031f53a3b9f,
+      Level: {fileID: 2453244184169100433, guid: 3efc8ba28caa0704ba736099b6cac393,
         type: 3}
       ScoreForStars: 960000005802000084030000
   - Index: 2
@@ -48,26 +48,26 @@ MonoBehaviour:
     Levels:
     - Index: 1
       DishOnLevel: 1
-      Level: {fileID: 2453244184169100433, guid: 477bb43327c472848846e031f53a3b9f,
+      Level: {fileID: 2453244184169100433, guid: 8c9fe1039299e7b4a82b4e49c36f3216,
         type: 3}
-      ScoreForStars: 
+      ScoreForStars: c800000058020000e8030000
     - Index: 2
       DishOnLevel: 6
-      Level: {fileID: 2453244184169100433, guid: 477bb43327c472848846e031f53a3b9f,
+      Level: {fileID: 2453244184169100433, guid: d9b96539eb354444b89910fcbefb6a69,
         type: 3}
-      ScoreForStars: 
+      ScoreForStars: c800000058020000e8030000
     - Index: 3
       DishOnLevel: 7
-      Level: {fileID: 2453244184169100433, guid: 477bb43327c472848846e031f53a3b9f,
+      Level: {fileID: 2453244184169100433, guid: fe1c97ba119fa014db854fec72d01eb0,
         type: 3}
-      ScoreForStars: 
+      ScoreForStars: c800000058020000e8030000
     - Index: 4
       DishOnLevel: 8
-      Level: {fileID: 2453244184169100433, guid: 477bb43327c472848846e031f53a3b9f,
+      Level: {fileID: 2453244184169100433, guid: 867eccd3d12c2494aa174bd0dd8554fd,
         type: 3}
-      ScoreForStars: 
+      ScoreForStars: c800000058020000e8030000
     - Index: 5
       DishOnLevel: 9
-      Level: {fileID: 2453244184169100433, guid: 477bb43327c472848846e031f53a3b9f,
+      Level: {fileID: 2453244184169100433, guid: 7b29d98f48fba324e8cdd0b838a1525d,
         type: 3}
-      ScoreForStars: 
+      ScoreForStars: c800000058020000e8030000

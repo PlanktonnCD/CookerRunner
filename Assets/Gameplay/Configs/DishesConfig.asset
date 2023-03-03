@@ -15,61 +15,61 @@ MonoBehaviour:
   _dishes:
     _keys: 00000000010000000200000003000000040000000500000006000000070000000800000009000000
     _values:
-    - Name: Borsch
+    - Name: "\u0411\u041E\u0420\u0429"
       Sprite: {fileID: 21300000, guid: 3a8a8f23b9ec40d4f9bc3354f0c702f3, type: 3}
       ModelPrefab: {fileID: 919132149155446097, guid: d8a7c7836f813be4480caff3a5851a0d,
         type: 3}
       RequireIngredients: 000000000300000002000000
       AdditionalScoreIngredients: 050000000900000001000000
-    - Name: Pizza
+    - Name: "\u041F\u0406\u0426\u0410"
       Sprite: {fileID: 21300000, guid: 49909da1eabd8f5469b2533582f9ddc4, type: 3}
       ModelPrefab: {fileID: 1800806129457766148, guid: da977056562e2924db1a0dcf90cc81d9,
         type: 3}
       RequireIngredients: 04000000060000000500000012000000
       AdditionalScoreIngredients: 09000000110000000a000000
-    - Name: Vareniki
+    - Name: "\u0412\u0410\u0420\u0415\u041D\u0418\u041A\u0418"
       Sprite: {fileID: 21300000, guid: e277034b7eea6af4d8fe14fa8ce959ed, type: 3}
       ModelPrefab: {fileID: 7427211591372178479, guid: 1f2be25df1e4d0a4a9d2e0a0d9d42681,
         type: 3}
       RequireIngredients: 040000000e00000003000000
       AdditionalScoreIngredients: 000000000d0000000c000000
-    - Name: Shpundra
+    - Name: "\u0428\u041F\u0423\u041D\u0414\u0420\u0410"
       Sprite: {fileID: 21300000, guid: cb7060211e84ce248918b001d9e7ee7f, type: 3}
       ModelPrefab: {fileID: 919132149155446097, guid: 2fb6c791aabbe404889a2a3d1506f503,
         type: 3}
       RequireIngredients: 020000000900000004000000
       AdditionalScoreIngredients: 0a0000000b000000
-    - Name: Cabbage rolls
+    - Name: "\u0413\u041E\u041B\u0423\u0411\u0426\u0406"
       Sprite: {fileID: 21300000, guid: 92acf8dbcb7b5ba489cd43016a82781d, type: 3}
       ModelPrefab: {fileID: 919132149155446097, guid: 676f4bf638868e048832ddd830cdbcaf,
         type: 3}
       RequireIngredients: 000000000900000010000000
       AdditionalScoreIngredients: 05000000010000000a000000
-    - Name: Ukrainian pancakes
+    - Name: "\u041C\u041B\u0418\u041D\u0426\u0406"
       Sprite: {fileID: 21300000, guid: 900d7dfe6d9c37d4a9533bd7c6cef649, type: 3}
-      ModelPrefab: {fileID: 919132149155446097, guid: 676f4bf638868e048832ddd830cdbcaf,
+      ModelPrefab: {fileID: 5275958215755434908, guid: 53e7bc51687f7f14ab531bfaa61a2b2d,
         type: 3}
       RequireIngredients: 130000000f00000004000000
       AdditionalScoreIngredients: 0d0000000c000000
-    - Name: Lasagnia
+    - Name: "\u041B\u0410\u0417\u0410\u041D\u042C\u042F"
       Sprite: {fileID: 21300000, guid: b879e7e05727fb648889573848aa9d35, type: 3}
-      ModelPrefab: {fileID: 719310459986219006, guid: bd11dee52a2523d4381ecc62df59e639,
+      ModelPrefab: {fileID: 1515968745092212183, guid: e02ddc2a8a6e2f2488d48558c4860c7a,
         type: 3}
       RequireIngredients: 0400000005000000090000000e000000
       AdditionalScoreIngredients: 060000000b0000000a00000011000000
-    - Name: Pasta
+    - Name: "\u041F\u0410\u0421\u0422\u0410"
       Sprite: {fileID: 21300000, guid: efa36337e9641a1489b245c6a43a12de, type: 3}
       ModelPrefab: {fileID: 919132149155446097, guid: 029bd2b227efac642bbad05b61e46190,
         type: 3}
       RequireIngredients: 04000000090000000500000001000000
       AdditionalScoreIngredients: 0a0000000b00000006000000
-    - Name: Minestrone
+    - Name: "\u041C\u0406\u041D\u0415\u0421\u0422\u0420\u041E\u041D\u0415"
       Sprite: {fileID: 21300000, guid: 81c46ced9acc7f243a7997090d2bc553, type: 3}
       ModelPrefab: {fileID: 8537709261172832569, guid: 1e30b4116f81e754cab0c8b9d702ba1b,
         type: 3}
       RequireIngredients: 0a0000000500000001000000
       AdditionalScoreIngredients: 06000000040000000b000000
-    - Name: Neapolitan Pastiera
+    - Name: "\u041F\u0430\u0441\u0442\u044C\u0454\u0440\u0430"
       Sprite: {fileID: 21300000, guid: 2b51c60ce09784f40b2b9e8c424e20d7, type: 3}
       ModelPrefab: {fileID: 7428909001201045359, guid: 6c9174617c76fad4aaf0b223395a73b9,
         type: 3}

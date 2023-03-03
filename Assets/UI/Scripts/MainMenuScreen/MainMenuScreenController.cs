@@ -1,4 +1,5 @@
-﻿using Cysharp.Threading.Tasks;
+﻿using Audio;
+using Cysharp.Threading.Tasks;
 using Gameplay.Scripts.DataProfiling;
 using Zenject;
 
@@ -7,10 +8,12 @@ namespace UI.Scripts.MainMenuScreen
     public class MainMenuScreenController : UIScreenController<MainMenuScreen>
     {
         private DataManager _dataManager;
+        private AudioManager _audioManager;
 
         [Inject]
-        private void Construct(DataManager dataManager)
+        private void Construct(DataManager dataManager, AudioManager audioManager)
         {
+            _audioManager = audioManager;
             _dataManager = dataManager;
         }
         
@@ -25,6 +28,7 @@ namespace UI.Scripts.MainMenuScreen
 
         public override async UniTask OnShow()
         {
+            _audioManager.PlayMusic(TrackName.mainmenu_music);
             View.StarsCountText.text = _dataManager.UserProfileData.ChapterInfoModel.GetStarsCount().ToString();
             await base.OnShow();
             foreach (var chapter in View.Chapters)

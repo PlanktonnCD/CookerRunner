@@ -2,8 +2,10 @@ namespace Particles
 {
     public enum ParticleType
     {
-        sparks_burst,
-        explosion,
-        sparks_burst_no_collision,
+        water_splash,
+        orange_splash,
+        red_splash,
+        purple_splash,
+        yellow_splash
     }
 }

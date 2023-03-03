@@ -8,6 +8,7 @@ namespace Gameplay.Scripts.DataProfiling.Models
         [JsonProperty] private bool _isSoundEnabled = true;
         [JsonProperty] private bool _isVibrationEnabled = true;
         [JsonProperty] private bool _isMusicEnabled = true;
+        [JsonProperty] private int _languageIndex;
         
         public void Initialize()
         {
@@ -36,6 +37,9 @@ namespace Gameplay.Scripts.DataProfiling.Models
             }
             return false;
         }
+
+        public int GetCurrentLanguageIndex() => _languageIndex;
+        public void SetLanguage(int index) => _languageIndex = index;
 
         public void SetSetting(bool setting, SettingType settingType)
         {

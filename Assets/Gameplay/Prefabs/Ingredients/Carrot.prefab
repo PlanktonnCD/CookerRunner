@@ -27,7 +27,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4829687290287257174}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.2, y: 1.24, z: -9.98}
+  m_LocalPosition: {x: 0, y: 1.24, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -54,6 +54,8 @@ MonoBehaviour:
   _isSlice: 1
   _1stSlicedPart: {fileID: 4519114483143048965}
   _2stSlicedPart: {fileID: 9062717793671810008}
+  _isNeedParticle: 1
+  _particleType: 1
 --- !u!54 &954699166040126856
 Rigidbody:
   m_ObjectHideFlags: 0

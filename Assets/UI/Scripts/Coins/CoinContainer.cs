@@ -27,7 +27,7 @@ namespace PlayerData
 
         public void SetCoinsFromData()
         {
-            _coinText.text = _dataManager.UserProfileData.CoinsInfoModel.Coins.ToString();
+            //_coinText.text = _dataManager.UserProfileData.CoinsInfoModel.Coins.ToString();
         }
 
         private void SetCoinText(CoinChangeSignal signal)

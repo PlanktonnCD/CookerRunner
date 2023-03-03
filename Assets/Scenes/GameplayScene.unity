@@ -20,11 +20,11 @@ RenderSettings:
   m_FogDensity: 0.01
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
-  m_AmbientSkyColor: {r: 0.212, g: 0.227, b: 0.259, a: 1}
+  m_AmbientSkyColor: {r: 0.9546709, g: 0.9546709, b: 0.9546709, a: 1}
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
   m_AmbientIntensity: 1
-  m_AmbientMode: 0
+  m_AmbientMode: 3
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
   m_SkyboxMaterial: {fileID: 2100000, guid: 617d9be015db68348a623b01ea51a8c5, type: 2}
   m_HaloStrength: 0.5
@@ -33,12 +33,12 @@ RenderSettings:
   m_HaloTexture: {fileID: 0}
   m_SpotCookie: {fileID: 10001, guid: 0000000000000000e000000000000000, type: 0}
   m_DefaultReflectionMode: 0
-  m_DefaultReflectionResolution: 128
+  m_DefaultReflectionResolution: 16
   m_ReflectionBounces: 1
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18642594, g: 0.5973579, b: 0.76775396, a: 1}
+  m_IndirectSpecularColor: {r: 0.5692758, g: 0.96082026, b: 1.0741519, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -238,6 +238,75 @@ MonoBehaviour:
   m_ShadowLayerMask: 1
   m_LightCookieSize: {x: 1, y: 1}
   m_LightCookieOffset: {x: 0, y: 0}
+--- !u!1001 &90985420
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2912114003490138592, guid: d276d1d782e841c4ca618888d48c885b,
+        type: 3}
+      propertyPath: m_Name
+      value: Env
+      objectReference: {fileID: 0}
+    - target: {fileID: 6469149983322748149, guid: d276d1d782e841c4ca618888d48c885b,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6469149983322748149, guid: d276d1d782e841c4ca618888d48c885b,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6469149983322748149, guid: d276d1d782e841c4ca618888d48c885b,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6469149983322748149, guid: d276d1d782e841c4ca618888d48c885b,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 153.98001
+      objectReference: {fileID: 0}
+    - target: {fileID: 6469149983322748149, guid: d276d1d782e841c4ca618888d48c885b,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6469149983322748149, guid: d276d1d782e841c4ca618888d48c885b,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6469149983322748149, guid: d276d1d782e841c4ca618888d48c885b,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6469149983322748149, guid: d276d1d782e841c4ca618888d48c885b,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6469149983322748149, guid: d276d1d782e841c4ca618888d48c885b,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6469149983322748149, guid: d276d1d782e841c4ca618888d48c885b,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6469149983322748149, guid: d276d1d782e841c4ca618888d48c885b,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: d276d1d782e841c4ca618888d48c885b, type: 3}
 --- !u!1 &1101446735
 GameObject:
   m_ObjectHideFlags: 0
@@ -329,6 +398,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 9806f1624460d4748a8bd55663c36e98, type: 2}
   - {fileID: 11400000, guid: 83bf77ffe46faa94a8dc084085e90ada, type: 2}
   - {fileID: 11400000, guid: ea7e10142c72ba34181454852efec90b, type: 2}
+  - {fileID: 11400000, guid: 148b2b1604833e04c90ac323c502f5d2, type: 2}
   _monoInstallers: []
   _installerPrefabs: []
   _autoRun: 1
@@ -457,7 +527,7 @@ Camera:
     width: 1
     height: 1
   near clip plane: 0.3
-  far clip plane: 1000
+  far clip plane: 250
   field of view: 60
   orthographic: 0
   orthographic size: 5
@@ -508,7 +578,7 @@ MonoBehaviour:
   m_RequiresOpaqueTextureOption: 2
   m_CameraType: 0
   m_Cameras: []
-  m_RendererIndex: -1
+  m_RendererIndex: 0
   m_VolumeLayerMask:
     serializedVersion: 2
     m_Bits: 1

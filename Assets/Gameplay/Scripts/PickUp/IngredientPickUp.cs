@@ -3,6 +3,7 @@ using Audio;
 using Cysharp.Threading.Tasks;
 using Gameplay.Scripts.Player;
 using Gameplay.Scripts.Player.Ingredients;
+using Particles;
 using Unity.Mathematics;
 using UnityEngine;
 using Zenject;
@@ -16,6 +17,8 @@ namespace Gameplay.Scripts.PickUp
         [SerializeField] private bool _isSlice;
         [SerializeField] private Transform _1stSlicedPart;
         [SerializeField] private Transform _2stSlicedPart;
+        [SerializeField] private bool _isNeedParticle;
+        [SerializeField] private ParticleType _particleType;
 
         protected override async UniTask OnPickUp(PlayerIngredientsStorage player)
         {
@@ -35,7 +38,9 @@ namespace Gameplay.Scripts.PickUp
                 Name = _ingredientsName,
                 Transforms = list,
                 IsSlice = _isSlice,
-                TrackName = _trackOnPick
+                TrackName = _trackOnPick,
+                IsNeedParticle = _isNeedParticle,
+                ParticleType = _particleType
             };
             player.PickUpIngredient(ingredient);
         }

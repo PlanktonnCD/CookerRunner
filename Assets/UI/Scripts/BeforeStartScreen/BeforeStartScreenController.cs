@@ -1,3 +1,4 @@
+using Audio;
 using Cysharp.Threading.Tasks;
 using Gameplay.Scripts.Chapters;
 using Movement;
@@ -11,10 +12,12 @@ namespace UI.Scripts.BeforeStartScreen
         private SignalBus _signalBus;
         private ChapterManager _chapterManager;
         private UIManager _uiManager;
+        private AudioManager _audioManager;
 
         [Inject]
-        private void Construct(SignalBus signalBus, ChapterManager chapterManager, UIManager uiManager)
+        private void Construct(SignalBus signalBus, ChapterManager chapterManager, UIManager uiManager, AudioManager audioManager)
         {
+            _audioManager = audioManager;
             _uiManager = uiManager;
             _chapterManager = chapterManager;
             _signalBus = signalBus;
@@ -34,6 +37,7 @@ namespace UI.Scripts.BeforeStartScreen
 
         public override async UniTask OnShow()
         {
+            _audioManager.PlayMusic(TrackName.levels_music);
             View.DishSmallRecipe.SetCurrentDishRecipe();
             await base.OnShow();
             _uiManager.Show<RecipeWindowController>();

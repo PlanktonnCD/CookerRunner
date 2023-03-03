@@ -146,7 +146,7 @@ namespace UI.Scripts.CheckDishScreen
                 if ( _dish.AdditionalScoreIngredients.Contains(ingredient))
                 {
                     correctIngredients++;
-                    _additionalScoreMultiplier += 0.1f;
+                    _additionalScoreMultiplier += 0.25f;
                 }
             }
 
@@ -169,32 +169,36 @@ namespace UI.Scripts.CheckDishScreen
             float accuracy = (((float)correctIngredients / (float)_ingredients.Count) * 100) + _additionalAccuracy;
             float visibleAccuracy = 0;
             View.AccuracyDishText.gameObject.SetActive(true);
-            do
+            var seq = DOTween.Sequence();
+            seq.Append(DOTween.To(() => visibleAccuracy, x =>
             {
+                visibleAccuracy = x;
                 View.AccuracyDishText.text = visibleAccuracy.ToString("0.") + "%";
-                visibleAccuracy += 1;
-                await UniTask.Delay(TimeSpan.FromSeconds(0.01f));
-            } while (visibleAccuracy <= accuracy);
-            
+            }, accuracy, 1.5f).SetEase(Ease.Linear));
             if (accuracy < 50)
             {
                 _isLose = true;
+                return;
             }
 
             if (accuracy < 75)
             {
                 _accuracyScoreMultiplier = 0.5f;
+                return;
             }
 
             if (accuracy < 100)
             {
                 _accuracyScoreMultiplier = 1f;
+                return;
             }
 
             if (accuracy >= 100)
             {
                 _accuracyScoreMultiplier = 2f;
             }
+
+            await UniTask.Delay(TimeSpan.FromSeconds(1.5f));
         }
 
         private async UniTask CalculateScore()
@@ -203,18 +207,19 @@ namespace UI.Scripts.CheckDishScreen
             var realScore = _score * (_accuracyScoreMultiplier * _timeScoreMultiplier * _additionalScoreMultiplier);
             var levelInitializer = _chapterConfig.GetLevelByDishName(_dishName);
             int stars = 0;
-            int visibleScore = 0;
-            do
+            float visibleScore = 0;
+            DOTween.To(() => visibleScore, x =>
             {
+                visibleScore = x;
                 View.ScoreText.text = visibleScore.ToString("0.");
-                visibleScore += 1;
-                if (stars < levelInitializer.ScoreForStars.Count && levelInitializer.ScoreForStars[stars] == visibleScore)
+                if (stars < levelInitializer.ScoreForStars.Count && levelInitializer.ScoreForStars[stars] <= visibleScore)
                 {
                     View.StarsImages[stars++].ActivateStar();
                 }
-                await UniTask.Delay(TimeSpan.FromMilliseconds(0.05f));
-            } while (visibleScore <= realScore);
-            _dataManager.UserProfileData.ChapterInfoModel.SetHighscore(_chapter, _level, visibleScore, stars);
+            }, realScore, 2).SetEase(Ease.Linear);
+            await UniTask.Delay(TimeSpan.FromSeconds(2f));
+            _dataManager.UserProfileData.ChapterInfoModel.SetHighscore(_chapter, _level, (int)visibleScore, stars);
+            
         }
 
         private void ChefHelp()

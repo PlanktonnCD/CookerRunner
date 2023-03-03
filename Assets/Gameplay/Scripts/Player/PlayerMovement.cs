@@ -25,7 +25,7 @@ namespace Gameplay.Scripts.Player
         private AnimationController<PlayerAnimationType> _animationController;
         private float _speed = 9;
         private float _posLimit;
-        private const float _posLimitConst = 4.52f;
+        private const float _posLimitConst = 5f;
         private bool _isRun;
         private bool _itCanMoveLeft = true;
         private bool _itCanMoveRight = true;

@@ -56,3 +56,10 @@ MonoBehaviour:
       GUID: 3aefb3c0463943698ab99edc6012f601
       _typeNameAndAssembly: UI.Scripts.LoseWindow.LoseWindowController, Assembly-CSharp
       _suppressLogs: 0
+  - Prefab: {fileID: 7251536859412318070, guid: 9503dc503a4864f4ba7fabaa1169c68a,
+      type: 3}
+    ClassReference:
+      GuidAssignmentFailed: 0
+      GUID: f3a3ca80be7a4a60a81841726d70beae
+      _typeNameAndAssembly: UI.Settings.SettingsWindowController, Assembly-CSharp
+      _suppressLogs: 0

@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08ded51c1c742b54981e8d5bd9a42515, type: 3}
   m_Name: ParticleInstaller
   m_EditorClassIdentifier: 
-  _particleManager: {fileID: 0}
-  _particleConfig: {fileID: 0}
+  _particleManager: {fileID: 4011075964829607085, guid: 2e456e48949755a48bba6bc357085633,
+    type: 3}
+  _particleConfig: {fileID: 11400000, guid: 8b1aef3d505564641ac6a2336a766edd, type: 2}

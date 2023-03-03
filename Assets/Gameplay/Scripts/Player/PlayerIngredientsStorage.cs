@@ -7,6 +7,7 @@ using DG.Tweening;
 using Gameplay.Scripts.Animation;
 using Gameplay.Scripts.Dishes;
 using Gameplay.Scripts.Player.Ingredients;
+using Particles;
 using UI;
 using UI.Scripts.CheckDishScreen;
 using UnityEngine;
@@ -28,10 +29,12 @@ namespace Gameplay.Scripts.Player
         private AnimationController<PlayerAnimationType> _animationController;
         private IngredientObject _currentIngredient;
         private AudioManager _audioManager;
+        private ParticleManager _particleManager;
 
         [Inject]
-        private void Construct(UIManager uiManager, AudioManager audioManager)
+        private void Construct(UIManager uiManager, AudioManager audioManager, ParticleManager particleManager)
         {
+            _particleManager = particleManager;
             _audioManager = audioManager;
             _uiManager = uiManager;
         }
@@ -71,6 +74,11 @@ namespace Gameplay.Scripts.Player
             }
             
             _audioManager.PlaySound(_currentIngredient.TrackName);
+            if (_currentIngredient.IsNeedParticle)
+            {
+                _particleManager.PlayParticleInPosition(_currentIngredient.ParticleType, _currentIngredient.Transforms[0].position, Quaternion.identity, Vector3.one*0.5f); 
+            }
+
             MoveIngredient(_currentIngredient.Transforms[0], IngredientFlyingDirection.Left);
             MoveIngredient(_currentIngredient.Transforms[1], IngredientFlyingDirection.Right);
         }
@@ -96,7 +104,7 @@ namespace Gameplay.Scripts.Player
                     seq.Append(ingredientTransform.DOLocalMoveY(transform.localPosition.y + 3, 1f).SetEase(Ease.OutCirc));
                     seq.Join(ingredientTransform.DOLocalMoveX(_potTransform.localPosition.x - 1 + xDelta, 1f).SetEase(Ease.Linear));
                     seq.Append(ingredientTransform.DOLocalMoveY(_potTransform.localPosition.y+0.25f, 1f).SetEase(Ease.InCirc));
-                    seq.Join(ingredientTransform.DOLocalMoveX(_potTransform.localPosition.x , 1f).SetEase(Ease.Linear));
+                    seq.Join(ingredientTransform.DOLocalMoveX(_potTransform.localPosition.x-0.2f , 1f).SetEase(Ease.Linear));
                     break;
                 case IngredientFlyingDirection.Center:
                     ingredientTransform.DOLocalMoveZ(_potTransform.localPosition.z, 2).SetEase(Ease.OutCirc);
@@ -111,7 +119,7 @@ namespace Gameplay.Scripts.Player
                     seq.Append(ingredientTransform.DOLocalMoveY(transform.localPosition.y + 3, 1f).SetEase(Ease.OutCirc));
                     seq.Join(ingredientTransform.DOLocalMoveX(_potTransform.localPosition.x + 1+ xDelta, 1f).SetEase(Ease.Linear));
                     seq.Append(ingredientTransform.DOLocalMoveY(_potTransform.localPosition.y+0.25f, 1f).SetEase(Ease.InCirc));
-                    seq.Join(ingredientTransform.DOLocalMoveX(_potTransform.localPosition.x , 1f).SetEase(Ease.Linear));
+                    seq.Join(ingredientTransform.DOLocalMoveX(_potTransform.localPosition.x+0.2f , 1f).SetEase(Ease.Linear));
                     break;
                 default:
                     throw new ArgumentOutOfRangeException(nameof(direction), direction, null);
@@ -119,6 +127,7 @@ namespace Gameplay.Scripts.Player
            
             seq.AppendCallback((() =>
             {
+                _particleManager.PlayParticleInTransform(ParticleType.water_splash, _potTransform, Quaternion.Euler(Vector3.left*90));
                 Destroy(ingredientTransform.gameObject);
             }));
             await UniTask.Delay(TimeSpan.FromSeconds(2f));
@@ -150,6 +159,8 @@ namespace Gameplay.Scripts.Player
         public bool IsSlice;
         public List<Transform> Transforms;
         public TrackName TrackName;
+        public bool IsNeedParticle;
+        public ParticleType ParticleType;
     }
 
     public enum IngredientFlyingDirection

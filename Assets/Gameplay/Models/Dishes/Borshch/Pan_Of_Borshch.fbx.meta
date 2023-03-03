@@ -3,7 +3,17 @@ guid: 59f3c3f8b2f13c34e8c5cc47f7b979c4
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Borshch
+    second: {fileID: 2100000, guid: d28bb84fab20afc4d8eb8feba3c60c13, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Pan
+    second: {fileID: 2100000, guid: edaa1fe63f7159147b313a65b183c18e, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
