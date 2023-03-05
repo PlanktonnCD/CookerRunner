@@ -134,6 +134,10 @@ Library: lib_burst_generated
 --compilation-defines=ENABLE_BURST_1_0_0_OR_NEWER
 --compilation-defines=USING_ANIMATION_MODULE
 --compilation-defines=USING_PHYSICS2D_MODULE
+--compilation-defines=UNITY_AI_ENABLED
+--compilation-defines=UNITY_PHYSICS2D_ENABLED
+--compilation-defines=UNITY_PHYSICS_ENABLED
+--compilation-defines=UNITY_IMAGECONVERSION_ENABLED
 --compilation-defines=MODULE_AI_EXISTS
 --compilation-defines=MODULE_ANIMATION_EXISTS
 --compilation-defines=MODULE_PHYSICS_EXISTS
@@ -152,6 +156,7 @@ Library: lib_burst_generated
 --root-assembly=G:\Unity\CookRun\Temp\StagingArea\Data\Managed\Unity.Services.Core.Telemetry.dll
 --root-assembly=G:\Unity\CookRun\Temp\StagingArea\Data\Managed\Unity.VisualScripting.State.dll
 --root-assembly=G:\Unity\CookRun\Temp\StagingArea\Data\Managed\Unity.RenderPipelines.Universal.Runtime.dll
+--root-assembly=G:\Unity\CookRun\Temp\StagingArea\Data\Managed\MyBox.dll
 --root-assembly=G:\Unity\CookRun\Temp\StagingArea\Data\Managed\CW.Common.dll
 --root-assembly=G:\Unity\CookRun\Temp\StagingArea\Data\Managed\Unity.VisualScripting.Flow.dll
 --root-assembly=G:\Unity\CookRun\Temp\StagingArea\Data\Managed\UniTask.Linq.dll
